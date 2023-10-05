@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".EmployeeDetailsFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:background="#1A2363F5"
+            android:src="@drawable/back"
+            app:shapeAppearance="@style/RoundedImageView.3dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_employee"
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+            android:src="@drawable/ic_employee"
+            app:shapeAppearance="@style/circleImageView"
+            app:layout_constraintTop_toBottomOf="@+id/iv_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_employee_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            tools:text="Mohmed ahmed wael"
+            app:layout_constraintTop_toBottomOf="@id/iv_employee"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_employee_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_tv_company_details"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="12dp"
+            android:textColor="#000000"
+            android:textSize="17sp"
+            tools:text="01264988467"
+            android:drawablePadding="10dp"
+            android:drawableStart="@drawable/mobile"
+            app:layout_constraintTop_toBottomOf="@id/tv_employee_name"/>
+
+        <TextView
+            android:id="@+id/tv_employee_job"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_tv_company_details"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="12dp"
+            android:textColor="#000000"
+            android:textSize="17sp"
+            tools:text="HR"
+            android:drawablePadding="10dp"
+            android:drawableStart="@drawable/ic_case"
+            app:layout_constraintTop_toBottomOf="@id/tv_employee_number"/>
+
+        <TextView
+            android:id="@+id/tv_employee_resume"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_tv_employee_details"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="12dp"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            tools:text="Employee resume"
+            android:drawableEnd="@drawable/ic_right_arrow_white"
+            android:drawablePadding="10dp"
+            android:drawableStart="@drawable/cv"
+            app:layout_constraintTop_toBottomOf="@id/tv_employee_job"/>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/btn_interview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cornerRadius="4dp"
+            android:layout_marginHorizontal="100dp"
+            android:layout_marginTop="150dp"
+            android:backgroundTint="@color/white"
+            app:layout_constraintTop_toBottomOf="@+id/tv_employee_resume"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#2363F5">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Interview"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:paddingVertical="9dp"
+                    android:drawablePadding="8dp"
+                    android:drawableStart="@drawable/interview"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>
