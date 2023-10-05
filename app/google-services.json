@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "758104734651",
+    "project_id": "employment-bf87c",
+    "storage_bucket": "employment-bf87c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:758104734651:android:cf2a0c2b7d279aa784a29e",
+        "android_client_info": {
+          "package_name": "com.employment.employment"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHLcZ5v0OeD7B7InMiCYs-4CBt3xfwHqs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
