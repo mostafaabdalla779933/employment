@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="24dp"
+    android:layout_marginTop="10dp"
+    android:background="@drawable/bg_tv_company_details"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/tv_job_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Job title"
+        android:textColor="#2363F5"
+        android:textSize="17sp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/tv_mobile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="01026151540"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/tv_company_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Company name"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:layout_marginTop="6dp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_job_title"
+        app:layout_constraintStart_toStartOf="@+id/tv_job_title"/>
+
+    <TextView
+        android:id="@+id/tv_about_company"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="About company About company About company"
+        android:textColor="@color/black"
+        android:textSize="13sp"
+        android:layout_marginTop="6dp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_company_name"
+        app:layout_constraintStart_toStartOf="@+id/tv_company_name"/>
+
+    <TextView
+        android:id="@+id/tv_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Combany number: "
+        android:textColor="@color/black"
+        android:textSize="13sp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_about_company"
+        app:layout_constraintStart_toStartOf="@+id/tv_about_company"/>
+
+    <TextView
+        android:id="@+id/tv_company_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="262130123"
+        android:textColor="@color/black"
+        android:textSize="13sp"
+        app:layout_constraintTop_toTopOf="@+id/tv_number"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_number"
+        app:layout_constraintStart_toEndOf="@+id/tv_number"/>
+
+    <TextView
+        android:id="@+id/tv_experience"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Experience years: "
+        android:textColor="@color/black"
+        android:textSize="13sp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_company_number"
+        app:layout_constraintStart_toStartOf="@+id/tv_about_company"/>
+
+    <TextView
+        android:id="@+id/tv_experience_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="2 years"
+        android:textColor="@color/black"
+        android:textSize="13sp"
+        app:layout_constraintTop_toTopOf="@+id/tv_experience"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_experience"
+        app:layout_constraintStart_toEndOf="@+id/tv_experience"/>
+
+    <TextView
+        android:id="@+id/tv_website"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/bg_tv_data"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="5dp"
+        android:textColor="#213B75"
+        android:textSize="12sp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="14dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_experience_number"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent=".45"
+        tools:text="www.website.com" />
+
+    <TextView
+        android:id="@+id/tv_gmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_tv_data"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="5dp"
+        android:textColor="#213B75"
+        android:textSize="12sp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintStart_toEndOf="@+id/tv_website"
+        app:layout_constraintTop_toBottomOf="@id/tv_experience_number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent=".45"
+        tools:text="company@gmail.com" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
