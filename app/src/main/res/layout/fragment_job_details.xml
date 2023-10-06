@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".JobDetailsFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:background="#1A2363F5"
+            android:src="@drawable/back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearance="@style/RoundedImageView.3dp" />
+
+        <TextView
+            android:id="@+id/tv_screen_tittle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@id/iv_back"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/iv_back"
+            tools:text="Job title" />
+
+        <TextView
+            android:id="@+id/tv_tittle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:text="Job title"
+            android:textColor="#A5A5A5"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_back" />
+
+        <TextView
+            android:id="@+id/tv_job_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/bg_tv_company_details"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="12dp"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tv_tittle"
+            app:layout_constraintTop_toBottomOf="@id/tv_tittle"
+            tools:text="Job title" />
+
+        <TextView
+            android:id="@+id/tv_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Job location"
+            android:textColor="#A5A5A5"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="@id/tv_job_title"
+            app:layout_constraintTop_toBottomOf="@id/tv_job_title" />
+
+        <TextView
+            android:id="@+id/tv_job_location"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/bg_tv_company_details"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="12dp"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tv_location"
+            app:layout_constraintTop_toBottomOf="@id/tv_location"
+            tools:text="Job location" />
+
+        <TextView
+            android:id="@+id/tv_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Description"
+            android:textColor="#A5A5A5"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="@id/tv_job_location"
+            app:layout_constraintTop_toBottomOf="@id/tv_job_location" />
+
+        <TextView
+            android:id="@+id/tv_job_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/bg_tv_company_details"
+            android:minLines="2"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="12dp"
+            android:singleLine="false"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tv_description"
+            app:layout_constraintTop_toBottomOf="@id/tv_description"
+            tools:text="Description" />
+
+        <TextView
+            android:id="@+id/tv_conditions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Job location"
+            android:textColor="#A5A5A5"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="@id/tv_job_description"
+            app:layout_constraintTop_toBottomOf="@id/tv_job_description" />
+
+        <TextView
+            android:id="@+id/tv_job_conditions"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/bg_tv_company_details"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="12dp"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tv_conditions"
+            app:layout_constraintTop_toBottomOf="@id/tv_conditions"
+            tools:text="Conditions" />
+
+        <TextView
+            android:id="@+id/tv_requirement"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Requirement"
+            android:textColor="#A5A5A5"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="@id/tv_job_conditions"
+            app:layout_constraintTop_toBottomOf="@id/tv_job_conditions" />
+
+        <TextView
+            android:id="@+id/tv_job_requirement"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/bg_tv_company_details"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="12dp"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tv_requirement"
+            app:layout_constraintTop_toBottomOf="@id/tv_requirement"
+            tools:text="Requirement" />
+
+        <TextView
+            android:id="@+id/tv_salary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Salary"
+            android:textColor="#A5A5A5"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="@id/tv_job_requirement"
+            app:layout_constraintTop_toBottomOf="@id/tv_job_requirement" />
+
+        <TextView
+            android:id="@+id/tv_job_salary"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/bg_tv_company_details"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="12dp"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@id/tv_salary"
+            app:layout_constraintTop_toBottomOf="@id/tv_salary"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent=".4"
+            tools:text="500$" />
+
+        <TextView
+            android:id="@+id/tv_hours"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="10dp"
+            android:text="Business hours"
+            android:textColor="#A5A5A5"
+            android:textSize="13sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_job_salary"
+            app:layout_constraintTop_toBottomOf="@id/tv_job_requirement" />
+
+        <LinearLayout
+            android:id="@+id/ll_job_hours"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/bg_tv_company_details"
+            android:orientation="horizontal"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_job_salary"
+            app:layout_constraintTop_toBottomOf="@id/tv_salary">
+
+            <TextView
+                android:id="@+id/tv_job_hours"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                tools:text="8" />
+
+            <TextView
+                android:id="@+id/tv_job_hours_from_to"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                tools:text="10 AM : 6 PM" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_vacations"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Vacations"
+            android:textColor="#A5A5A5"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="@id/tv_job_requirement"
+            app:layout_constraintTop_toBottomOf="@id/ll_job_hours" />
+
+        <TextView
+            android:id="@+id/tv_job_vacations"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/bg_tv_company_details"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="12dp"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tv_vacations"
+            app:layout_constraintTop_toBottomOf="@id/tv_vacations"
+            tools:text="Friday, Sunday" />
+
+        <TextView
+            android:id="@+id/tv_nationality"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Nationality"
+            android:textColor="#A5A5A5"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="@id/tv_job_vacations"
+            app:layout_constraintTop_toBottomOf="@id/tv_job_vacations" />
+
+        <TextView
+            android:id="@+id/tv_job_nationality"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/bg_tv_company_details"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="12dp"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@id/tv_nationality"
+            app:layout_constraintTop_toBottomOf="@id/tv_nationality"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent=".4"
+            tools:text="Egypt" />
+
+        <TextView
+            android:id="@+id/tv_age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="10dp"
+            android:text="Age"
+            android:textColor="#A5A5A5"
+            android:textSize="13sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_job_nationality"
+            app:layout_constraintTop_toBottomOf="@id/tv_job_vacations" />
+
+        <TextView
+            android:id="@+id/tv_job_age"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/bg_tv_company_details"
+            android:orientation="horizontal"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="12dp"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_job_nationality"
+            app:layout_constraintTop_toBottomOf="@id/tv_age"
+            tools:text="8" />
+
+        <TextView
+            android:id="@+id/tv_experience"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Experience"
+            android:textColor="#A5A5A5"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="@id/tv_job_vacations"
+            app:layout_constraintTop_toBottomOf="@id/tv_job_age" />
+
+        <TextView
+            android:id="@+id/tv_job_experience"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/bg_tv_company_details"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="12dp"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@id/tv_experience"
+            app:layout_constraintTop_toBottomOf="@id/tv_experience"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent=".4"
+            tools:text="4" />
+
+        <TextView
+            android:id="@+id/tv_work_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="10dp"
+            android:text="Work time"
+            android:textColor="#A5A5A5"
+            android:textSize="13sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_job_experience"
+            app:layout_constraintTop_toBottomOf="@id/tv_job_age" />
+
+        <TextView
+            android:id="@+id/tv_job_work_time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/bg_tv_company_details"
+            android:orientation="horizontal"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="12dp"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_job_experience"
+            app:layout_constraintTop_toBottomOf="@id/tv_work_time"
+            tools:text="Full time" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_request"
+            style="@style/roundedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="96dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="56dp"
+            android:paddingVertical="8dp"
+            android:text="Request"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_job_work_time" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>
