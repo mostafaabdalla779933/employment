@@ -22,7 +22,7 @@ data class UserModel(
 
 
 enum class UserType(val value:String){
-    Admin("Admin"),User("User"),Teacher("Teacher")
+    User("User"),Company("Company")
 }
 
 enum class UserState(val value:String){

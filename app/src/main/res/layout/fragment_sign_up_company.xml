@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+
+        android:id="@+id/layout_company"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="21dp"
+            android:text="Company logo"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_company_logo"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="12dp"
+            android:background="#212363F5"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_add"
+            app:shapeAppearance="@style/RoundedImageView.3dp" />
+
+        <EditText
+            android:id="@+id/et_company_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_edit_text"
+            android:hint="Company Name"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="8dp" />
+
+        <EditText
+            android:id="@+id/et_mobile_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_edit_text"
+            android:hint="Mobile Number"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="21dp"
+            android:text="Add branchs"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/et_branch_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_edit_text"
+            android:hint="Branch Name"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="8dp" />
+
+        <EditText
+            android:id="@+id/et_branch_mobile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_edit_text"
+            android:hint="Barnch Mobile Number"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="8dp" />
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/roundedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="10dp"
+            android:drawableEnd="@drawable/ic_add_white"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="8dp"
+            android:text="Add Branch" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_branches"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="10dp" />
+
+        <EditText
+            android:id="@+id/et_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/bg_edit_text"
+            android:hint="Address"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="8dp" />
+
+        <EditText
+            android:id="@+id/et_website"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_edit_text"
+            android:hint="Company website (Optional)"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="8dp" />
+
+        <EditText
+            android:id="@+id/et_about"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_edit_text"
+            android:gravity="top|start"
+            android:hint="About company"
+            android:inputType="textMultiLine"
+            android:lines="8"
+            android:maxLines="10"
+            android:minLines="6"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="8dp"
+            android:scrollbars="vertical"
+            android:singleLine="false" />
+
+        <TextView
+            android:id="@+id/et_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_edit_text"
+            android:drawableEnd="@drawable/ic_location"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="8dp"
+            android:text="Company Location" />
+
+        <EditText
+            android:id="@+id/et_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_edit_text"
+            android:hint="Email"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="8dp" />
+
+        <EditText
+            android:id="@+id/et_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_edit_text"
+            android:hint="Password"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="8dp" />
+
+        <EditText
+            android:id="@+id/et_confirm_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_edit_text"
+            android:hint="Confirm Password"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="8dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_sign_up"
+            style="@style/roundedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="16dp"
+            android:paddingVertical="8dp"
+            android:text="SIGN UP"
+            android:textSize="18sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/white"
+            android:paddingVertical="8dp"
+            android:text="SIGN IN"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:cornerRadius="4dp" />
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

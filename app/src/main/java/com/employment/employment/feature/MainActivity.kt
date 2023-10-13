@@ -1,7 +1,8 @@
-package com.employment.employment
+package com.employment.employment.feature
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.employment.employment.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

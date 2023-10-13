@@ -13,7 +13,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.employment.employment.common.showMessage
 
 
-abstract class BaseFragment<V : ViewBinding, VM : BaseViewModel>
+abstract class BaseFragment<V : ViewBinding>
     : Fragment(), BaseView {
 
 
@@ -24,13 +24,11 @@ abstract class BaseFragment<V : ViewBinding, VM : BaseViewModel>
     private var _binding: V? = null
     val binding get() = _binding!!
 
-    open lateinit var viewModel: VM
 
     open lateinit var progressDialog: ProgressDialog
 
     abstract fun initBinding(): V
 
-    abstract fun initViewModel()
 
     abstract fun onFragmentCreated()
 
@@ -42,7 +40,6 @@ abstract class BaseFragment<V : ViewBinding, VM : BaseViewModel>
         super.onCreate(savedInstanceState)
 
 
-        initViewModel()
         _binding = initBinding()
 
         if (context != null) progressDialog = ProgressDialog(requireContext())

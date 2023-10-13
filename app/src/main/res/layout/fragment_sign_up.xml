@@ -1,364 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".SignUpFragment">
+    tools:context=".feature.auth.SignUpFragment">
 
-    <LinearLayout
-        android:orientation="vertical"
+    <TextView
+        android:id="@+id/tv_tittle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:text="Sign Up"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="21dp"
+        android:background="@color/transparent"
+        app:layout_constraintTop_toBottomOf="@id/tv_tittle"
+        app:tabIndicatorColor="#2363F5"
+        app:tabSelectedTextColor="#2363F5"
+        app:tabTextAppearance="@style/Text.tabs"
+        app:tabTextColor="#B5B5B5">
 
-        <TextView
-            android:id="@+id/tv_tittle"
+        <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sign Up"
-            android:textColor="@color/black"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"/>
+            android:text="Company" />
 
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabLayout"
-            android:layout_width="match_parent"
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/tv_tittle"
-            android:layout_marginTop="21dp"
-            app:tabTextColor="#B5B5B5"
-            app:tabTextAppearance="@style/Text.tabs"
-            app:tabSelectedTextColor="#2363F5"
-            app:tabIndicatorColor="#2363F5"
-            android:background="@color/transparent">
+            android:text="User" />
 
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Company" />
+    </com.google.android.material.tabs.TabLayout>
 
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="User" />
 
-        </com.google.android.material.tabs.TabLayout>
+    <androidx.viewpager2.widget.ViewPager2
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/viewPager"
+        android:layout_weight="1" />
 
-        <LinearLayout
-            android:id="@+id/layout_company"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="visible"
-            android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Company logo"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="21dp"/>
-
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/iv_company_logo"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:src="@drawable/ic_add"
-                android:scaleType="centerInside"
-                android:layout_marginTop="12dp"
-                android:layout_marginStart="24dp"
-                android:background="#212363F5"
-                app:shapeAppearance="@style/RoundedImageView.3dp"/>
-
-            <EditText
-                android:id="@+id/et_company_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:paddingVertical="8dp"
-                android:paddingHorizontal="16dp"
-                android:hint="Company Name"
-                android:background="@drawable/bg_edit_text"
-                android:layout_marginHorizontal="24dp"/>
-
-            <EditText
-                android:id="@+id/et_mobile_number"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:paddingVertical="8dp"
-                android:paddingHorizontal="16dp"
-                android:hint="Mobile Number"
-                android:background="@drawable/bg_edit_text"
-                android:layout_marginHorizontal="24dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Add branchs"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:textSize="14sp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="21dp"/>
-
-            <EditText
-                android:id="@+id/et_branch_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:paddingVertical="8dp"
-                android:paddingHorizontal="16dp"
-                android:hint="Branch Name"
-                android:background="@drawable/bg_edit_text"
-                android:layout_marginHorizontal="24dp"/>
-
-            <EditText
-                android:id="@+id/et_branch_mobile"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginHorizontal="24dp"
-                android:paddingVertical="8dp"
-                android:paddingHorizontal="16dp"
-                android:hint="Barnch Mobile Number"
-                android:background="@drawable/bg_edit_text" />
-
-            <com.google.android.material.button.MaterialButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginHorizontal="24dp"
-                android:paddingVertical="8dp"
-                android:paddingHorizontal="16dp"
-                style="@style/roundedButton"
-                android:text="Add Branch"
-                android:drawableEnd="@drawable/ic_add_white" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_branches"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginHorizontal="24dp"/>
-
-            <EditText
-                android:id="@+id/et_address"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:layout_marginHorizontal="24dp"
-                android:paddingVertical="8dp"
-                android:paddingHorizontal="16dp"
-                android:hint="Address"
-                android:background="@drawable/bg_edit_text" />
-
-            <EditText
-                android:id="@+id/et_website"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginHorizontal="24dp"
-                android:paddingVertical="8dp"
-                android:paddingHorizontal="16dp"
-                android:hint="Company website (Optional)"
-                android:background="@drawable/bg_edit_text"/>
-
-            <EditText
-                android:id="@+id/et_about"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginHorizontal="24dp"
-                android:gravity="top|start"
-                android:inputType="textMultiLine"
-                android:lines="8"
-                android:maxLines="10"
-                android:minLines="6"
-                android:scrollbars="vertical"
-                android:singleLine="false"
-                android:paddingVertical="8dp"
-                android:paddingHorizontal="16dp"
-                android:hint="About company"
-                android:background="@drawable/bg_edit_text" />
-
-            <TextView
-                android:id="@+id/et_location"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginHorizontal="24dp"
-                android:paddingVertical="8dp"
-                android:paddingHorizontal="16dp"
-                android:drawableEnd="@drawable/ic_location"
-                android:text="Company Location"
-                android:background="@drawable/bg_edit_text" />
-
-            <EditText
-                android:id="@+id/et_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:paddingVertical="8dp"
-                android:paddingHorizontal="16dp"
-                android:hint="Email"
-                android:background="@drawable/bg_edit_text"
-                android:layout_marginHorizontal="24dp"/>
-
-            <EditText
-                android:id="@+id/et_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingVertical="8dp"
-                android:paddingHorizontal="16dp"
-                android:hint="Password"
-                android:background="@drawable/bg_edit_text"
-                android:layout_marginTop="10dp"
-                android:layout_marginHorizontal="24dp"/>
-
-            <EditText
-                android:id="@+id/et_confirm_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingVertical="8dp"
-                android:paddingHorizontal="16dp"
-                android:hint="Confirm Password"
-                android:background="@drawable/bg_edit_text"
-                android:layout_marginTop="10dp"
-                android:layout_marginHorizontal="24dp"/>
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_sign_up"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                style="@style/roundedButton"
-                android:text="SIGN UP"
-                android:textSize="18sp"
-                android:layout_marginHorizontal="24dp"
-                android:paddingVertical="8dp" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_login"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                app:cornerRadius="4dp"
-                android:backgroundTint="@color/white"
-                android:textColor="@color/black"
-                android:text="SIGN IN"
-                android:textSize="18sp"
-                android:layout_marginHorizontal="24dp"
-                android:paddingVertical="8dp" />
-        </LinearLayout>
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/layout_user"
-            android:visibility="gone"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <EditText
-                android:id="@+id/et_user_first_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:paddingVertical="8dp"
-                android:paddingHorizontal="16dp"
-                android:inputType="text"
-                android:hint="First Name"
-                android:background="@drawable/bg_edit_text"
-                android:layout_marginHorizontal="24dp"/>
-
-            <EditText
-                android:id="@+id/et_user_last_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:paddingVertical="8dp"
-                android:paddingHorizontal="16dp"
-                android:inputType="text"
-                android:hint="Last Name"
-                android:background="@drawable/bg_edit_text"
-                android:layout_marginHorizontal="24dp"/>
-
-            <EditText
-                android:id="@+id/et_user_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:paddingVertical="8dp"
-                android:paddingHorizontal="16dp"
-                android:inputType="textEmailAddress"
-                android:hint="Email"
-                android:background="@drawable/bg_edit_text"
-                android:layout_marginHorizontal="24dp"/>
-
-            <EditText
-                android:id="@+id/et_user_mobile"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:paddingVertical="8dp"
-                android:paddingHorizontal="16dp"
-                android:inputType="phone"
-                android:hint="Mobile"
-                android:background="@drawable/bg_edit_text"
-                android:layout_marginHorizontal="24dp"/>
-
-            <EditText
-                android:id="@+id/et_user_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingVertical="8dp"
-                android:paddingHorizontal="16dp"
-                android:hint="Password"
-                android:inputType="textPassword"
-                android:background="@drawable/bg_edit_text"
-                android:layout_marginTop="10dp"
-                android:layout_marginHorizontal="24dp"/>
-
-            <EditText
-                android:id="@+id/et_user_confirm_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingVertical="8dp"
-                android:paddingHorizontal="16dp"
-                android:hint="Confirm Password"
-                android:inputType="textPassword"
-                android:background="@drawable/bg_edit_text"
-                android:layout_marginTop="10dp"
-                android:layout_marginHorizontal="24dp"/>
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_user_sign_up"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="94dp"
-                style="@style/roundedButton"
-                android:text="SIGN UP"
-                android:textSize="18sp"
-                android:layout_marginHorizontal="24dp"
-                android:paddingVertical="8dp" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_user_login"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                app:cornerRadius="4dp"
-                android:backgroundTint="@color/white"
-                android:textColor="@color/black"
-                android:text="SIGN IN"
-                android:textSize="18sp"
-                android:layout_marginHorizontal="24dp"
-                android:paddingVertical="8dp" />
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-    </LinearLayout>
-</androidx.core.widget.NestedScrollView>
+</LinearLayout>

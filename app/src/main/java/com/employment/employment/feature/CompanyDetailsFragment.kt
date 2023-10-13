@@ -1,12 +1,14 @@
-package com.employment.employment
+package com.employment.employment.feature
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.employment.employment.R
 
-class JobRequestFragment : Fragment() {
+
+class CompanyDetailsFragment : Fragment() {
 
 
     override fun onCreateView(
@@ -14,8 +16,7 @@ class JobRequestFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_job_request, container, false)
+        return inflater.inflate(R.layout.fragment_company_details, container, false)
     }
-
 
 }
