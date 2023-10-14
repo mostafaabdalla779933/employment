@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">employment</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="lat_long_snippet">Lat: %1$.5f, Long: %2$.5f</string>
+    <string name="permission_denied_explanation">You need to grant location permission in order to select the location.</string>
+    <string name="Deny">Deny</string>
+    <string name="grant">Grant</string>
+    <string name="settings">Settings</string>
 </resources>

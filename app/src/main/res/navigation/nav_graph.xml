@@ -38,4 +38,9 @@
         android:name="com.employment.employment.feature.auth.SignUpFragment"
         android:label="fragment_sign_up"
         tools:layout="@layout/fragment_sign_up" />
+    <fragment
+        android:id="@+id/selectLocationFragment"
+        android:name="com.employment.employment.feature.map.SelectLocationFragment"
+        android:label="fragment_select_location"
+        tools:layout="@layout/fragment_select_location" />
 </navigation>

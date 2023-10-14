@@ -1,23 +1,26 @@
 package com.employment.employment.feature.auth
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import com.employment.employment.R
+
+import androidx.navigation.fragment.findNavController
+import com.employment.employment.common.base.BaseFragment
+import com.employment.employment.databinding.FragmentSignUpUserBinding
 
 
-class SignUpUserFragment : Fragment() {
+class SignUpUserFragment : BaseFragment<FragmentSignUpUserBinding>(){
+    override fun initBinding()= FragmentSignUpUserBinding.inflate(layoutInflater)
 
+    override fun onFragmentCreated() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_sign_up_user, container, false)
+        setActions()
     }
 
+
+    private fun setActions(){
+        binding.apply {
+            btnUserLogin.setOnClickListener {
+                findNavController().popBackStack()
+            }
+        }
+    }
 
 }

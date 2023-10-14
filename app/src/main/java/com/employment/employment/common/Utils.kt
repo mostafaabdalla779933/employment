@@ -1,6 +1,7 @@
 package com.employment.employment.common
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.pm.PackageManager
 import android.database.Cursor
@@ -20,7 +21,13 @@ import java.util.regex.Pattern
 import java.math.RoundingMode
 import java.text.DecimalFormat
 import android.location.Geocoder
+import android.os.Looper
 import androidx.fragment.app.Fragment
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationCallback
+import com.google.android.gms.location.LocationRequest
+import com.google.android.gms.location.LocationResult
+import com.google.android.gms.location.LocationServices
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -199,6 +206,56 @@ fun Fragment.isLocationEnabled(): Boolean {
     return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || locationManager.isProviderEnabled(
         LocationManager.NETWORK_PROVIDER
     )
+}
+
+@SuppressLint("MissingPermission")
+fun Fragment.requestNewLocationData(getLocation: (Location) -> Unit) {  //get fresh location
+    val locationRequest = LocationRequest()
+    locationRequest.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
+    locationRequest.interval = 0
+    locationRequest.fastestInterval = 0
+    locationRequest.numUpdates = 1
+    val fusedLocationProviderClient: FusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireContext())
+    fusedLocationProviderClient.requestLocationUpdates(
+        locationRequest,
+        this.locationCallBack(getLocation),
+        Looper.myLooper()!!
+    )
+}
+
+fun Fragment.locationCallBack(getLocation: (Location) -> Unit): LocationCallback {
+    val locationCallBack: LocationCallback = object : LocationCallback() {
+        override fun onLocationResult(p0: LocationResult) {
+            super.onLocationResult(p0)
+            val location = p0.lastLocation
+            if (location != null) {
+                getLocation(location)
+            }
+        }
+    }
+    return  locationCallBack
+}
+
+@SuppressLint("MissingPermission")
+fun Fragment.getLastLocation(getLocation: (Location) -> Unit,enableLocation:()->Unit ={},requestPermission:()->Unit ={}) {
+
+    val fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireContext())
+    if (checkPermissions()) {
+        if (isLocationEnabled()) {
+            fusedLocationProviderClient.lastLocation
+                .addOnSuccessListener(requireActivity()) { location ->
+                    if (location == null) {
+                        requestNewLocationData(getLocation) //get fresh location
+                    } else {
+                        getLocation(location)
+                    }
+                }
+        } else {
+            enableLocation()
+        }
+    } else {
+        requestPermission()
+    }
 }
 
 

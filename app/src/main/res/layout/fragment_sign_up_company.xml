@@ -39,10 +39,10 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="16dp"
-            android:background="@drawable/bg_edit_text"
             android:hint="Company Name"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="8dp" />
+            android:inputType="textPersonName"
+            style="@style/EditText.edit"
+            android:padding="14dp"/>
 
         <EditText
             android:id="@+id/et_mobile_number"
@@ -50,10 +50,10 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/bg_edit_text"
             android:hint="Mobile Number"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="8dp" />
+            android:inputType="phone"
+            style="@style/EditText.edit"
+            android:padding="14dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -71,10 +71,10 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/bg_edit_text"
             android:hint="Branch Name"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="8dp" />
+            android:inputType="text"
+            style="@style/EditText.edit"
+            android:padding="14dp" />
 
         <EditText
             android:id="@+id/et_branch_mobile"
@@ -82,10 +82,10 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/bg_edit_text"
-            android:hint="Barnch Mobile Number"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="8dp" />
+            android:hint="Branch Mobile Number"
+            android:inputType="phone"
+            style="@style/EditText.edit"
+            android:padding="14dp" />
 
         <com.google.android.material.button.MaterialButton
             style="@style/roundedButton"
@@ -111,10 +111,10 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="24dp"
-            android:background="@drawable/bg_edit_text"
             android:hint="Address"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="8dp" />
+            android:inputType="text"
+            style="@style/EditText.edit"
+            android:padding="14dp" />
 
         <EditText
             android:id="@+id/et_website"
@@ -122,10 +122,10 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/bg_edit_text"
+            android:inputType="text"
             android:hint="Company website (Optional)"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="8dp" />
+            style="@style/EditText.edit"
+            android:padding="14dp" />
 
         <EditText
             android:id="@+id/et_about"
@@ -140,33 +140,31 @@
             android:lines="8"
             android:maxLines="10"
             android:minLines="6"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="8dp"
+            android:padding="14dp"
             android:scrollbars="vertical"
             android:singleLine="false" />
 
         <TextView
-            android:id="@+id/et_location"
+            android:id="@+id/tvLocation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/bg_edit_text"
-            android:drawableEnd="@drawable/ic_location"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="8dp"
-            android:text="Company Location" />
+            style="@style/EditText.edit"
+            android:padding="14dp"
+            android:hint="Company Location"
+            app:drawableEndCompat="@drawable/ic_location" />
 
         <EditText
-            android:id="@+id/et_email"
+            android:id="@+id/etEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/bg_edit_text"
+            android:inputType="textEmailAddress"
             android:hint="Email"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="8dp" />
+            style="@style/EditText.edit"
+            android:padding="14dp" />
 
         <EditText
             android:id="@+id/et_password"
@@ -174,10 +172,10 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/bg_edit_text"
+            android:inputType="textPassword"
             android:hint="Password"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="8dp" />
+            style="@style/EditText.edit"
+            android:padding="14dp" />
 
         <EditText
             android:id="@+id/et_confirm_password"
@@ -185,16 +183,17 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/bg_edit_text"
+            android:inputType="textPassword"
             android:hint="Confirm Password"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="8dp" />
+            style="@style/EditText.edit"
+            android:padding="14dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_sign_up"
             style="@style/roundedButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="15dp"
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="16dp"
             android:paddingVertical="8dp"
