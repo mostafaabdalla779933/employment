@@ -6,4 +6,7 @@
     <string name="Deny">Deny</string>
     <string name="grant">Grant</string>
     <string name="settings">Settings</string>
+    <string name="title_home">Home</string>
+    <string name="title_resume">Resume</string>
+    <string name="title_menu">Menu</string>
 </resources>
