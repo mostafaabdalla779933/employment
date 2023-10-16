@@ -20,11 +20,10 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="20dp"
-            android:background="@drawable/bg_edit_text"
             android:hint="First Name"
-            android:inputType="text"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="8dp" />
+            android:inputType="textPersonName"
+            style="@style/EditText.edit"
+            android:padding="14dp" />
 
         <EditText
             android:id="@+id/et_user_last_name"
@@ -32,11 +31,10 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/bg_edit_text"
             android:hint="Last Name"
-            android:inputType="text"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="8dp" />
+            android:inputType="textPersonName"
+            style="@style/EditText.edit"
+            android:padding="14dp"/>
 
         <EditText
             android:id="@+id/et_user_email"
@@ -44,11 +42,10 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/bg_edit_text"
             android:hint="Email"
             android:inputType="textEmailAddress"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="8dp" />
+            style="@style/EditText.edit"
+            android:padding="14dp" />
 
         <EditText
             android:id="@+id/et_user_mobile"
@@ -56,11 +53,10 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/bg_edit_text"
             android:hint="Mobile"
             android:inputType="phone"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="8dp" />
+            style="@style/EditText.edit"
+            android:padding="14dp" />
 
         <EditText
             android:id="@+id/et_user_password"
@@ -68,11 +64,10 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/bg_edit_text"
             android:hint="Password"
             android:inputType="textPassword"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="8dp" />
+            style="@style/EditText.edit"
+            android:padding="14dp" />
 
         <EditText
             android:id="@+id/et_user_confirm_password"
@@ -80,11 +75,10 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/bg_edit_text"
             android:hint="Confirm Password"
             android:inputType="textPassword"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="8dp" />
+            style="@style/EditText.edit"
+            android:padding="14dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_user_sign_up"
@@ -93,7 +87,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="94dp"
-            android:paddingVertical="8dp"
+            android:paddingVertical="15dp"
             android:text="SIGN UP"
             android:textSize="18sp" />
 
@@ -104,7 +98,7 @@
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="16dp"
             android:backgroundTint="@color/white"
-            android:paddingVertical="8dp"
+            android:paddingVertical="15dp"
             android:text="SIGN IN"
             android:textColor="@color/black"
             android:textSize="18sp"

@@ -2,6 +2,7 @@ package com.employment.employment.feature.splash
 
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import androidx.activity.result.contract.ActivityResultContracts
@@ -12,6 +13,8 @@ import com.employment.employment.common.base.BaseFragment
 import com.employment.employment.common.firebase.FirebaseHelp
 import com.employment.employment.common.firebase.data.UserType
 import com.employment.employment.databinding.FragmentSplashBinding
+import com.employment.employment.feature.companyDashboard.CompanyDashboardActivity
+import com.employment.employment.feature.userDashboard.UserDashboardActivity
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -33,10 +36,12 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>(){
                 FirebaseHelp.user = it
                 when(it.userType){
                     UserType.Company.value ->{
-                       // findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToAdminDashboardFragment())
+                        startActivity(Intent(requireContext(), CompanyDashboardActivity::class.java))
+                        requireActivity().finish()
                     }
                     UserType.User.value ->{
-                       // findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToUserDashboardFragment())
+                        startActivity(Intent(requireContext(), UserDashboardActivity::class.java))
+                        requireActivity().finish()
                     }
                 }
             }, {

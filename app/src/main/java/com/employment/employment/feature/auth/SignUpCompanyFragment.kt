@@ -12,12 +12,18 @@ import android.provider.MediaStore
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.employment.employment.R
 import com.employment.employment.common.base.BaseFragment
 import com.employment.employment.common.firebase.FirebaseHelp
+import com.employment.employment.common.firebase.data.BranchModel
 import com.employment.employment.common.firebase.data.SelectedLocation
 import com.employment.employment.common.firebase.data.UserModel
+import com.employment.employment.common.firebase.data.UserType
+import com.employment.employment.common.getString
+import com.employment.employment.common.isStringEmpty
+import com.employment.employment.common.isValidEmail
 import com.employment.employment.common.setImageFromUri
 import com.employment.employment.common.showMessage
 import com.employment.employment.databinding.FragmentSignUpCompanyBinding
@@ -27,12 +33,14 @@ class SignUpCompanyFragment :BaseFragment<FragmentSignUpCompanyBinding>(){
 
     private var listOfUsers = mutableListOf<UserModel>()
     private var selectedUri : Uri?  =null
-
+    private lateinit var branchAdapter:BranchAdapter
     private var selectedLocation:SelectedLocation?=null
     override fun initBinding()=FragmentSignUpCompanyBinding.inflate(layoutInflater)
 
     override fun onFragmentCreated() {
         setActions()
+        getData()
+
     }
 
 
@@ -46,15 +54,37 @@ class SignUpCompanyFragment :BaseFragment<FragmentSignUpCompanyBinding>(){
             }
 
         binding.apply {
+            if(!::branchAdapter.isInitialized){
+                branchAdapter = BranchAdapter()
+            }
+
+            rvBranches.adapter = branchAdapter
             btnLogin.setOnClickListener {
                 findNavController().popBackStack()
             }
             btnSignUp.setOnClickListener {
-               // validate()
+                validate()
             }
 
             tvLocation.setOnClickListener {
                 findNavController().navigate(R.id.selectLocationFragment)
+            }
+
+            btnAddBranch.setOnClickListener {
+                when{
+                    etBranchName.isStringEmpty() ->{
+                        showErrorMsg("fill branch name")
+                    }
+                    etBranchMobile.isStringEmpty() ->{
+                        showErrorMsg("fill branch mobile")
+                    }
+                    else ->{
+                        branchAdapter.list.add(BranchModel(name = etBranchName.getString(), mobile = etBranchMobile.getString()))
+                        branchAdapter.notifyDataSetChanged()
+                        etBranchName.setText("")
+                        etBranchMobile.setText("")
+                    }
+                }
             }
 
             ivCompanyLogo.setOnClickListener {
@@ -64,6 +94,10 @@ class SignUpCompanyFragment :BaseFragment<FragmentSignUpCompanyBinding>(){
                     chooseUserPhotoFromGallery()
                 }
             }
+        }
+
+        selectedUri?.let {
+            binding.ivCompanyLogo.setImageFromUri(it, requireContext())
         }
     }
 
@@ -153,69 +187,88 @@ class SignUpCompanyFragment :BaseFragment<FragmentSignUpCompanyBinding>(){
     }
 
 
-//    private fun validate(){
-//        binding.apply {
-//            when{
-//                etFullName.isStringEmpty() ->{
-//                    showErrorMsg("fill name")
-//                }
-//
-//                etPhoneNumber.isStringEmpty() ->{
-//                    showErrorMsg("fill mobile number")
-//                }
-//
-//                selectedDate == null ->{
-//                    showErrorMsg("fill birthdate")
-//                }
-//
-//                isValidEmail(etEmail.getString()).not() ->{
-//                    showErrorMsg("invalid email")
-//                }
-//                listOfUsers.none { e -> e.email == etEmail.getString() }.not() ->{
-//                    showErrorMsg("this email already in use")
-//                }
-//
-//                etPass.isStringEmpty() ->{
-//                    showErrorMsg("fill password")
-//                }
-//
-//                etPass.getString() != etConfirmPass.getString() ->{
-//                    showErrorMsg("invalid confirmation password")
-//                }
-//                else->{
-//                    signWithFirebase()
-//                }
-//
-//            }
-//        }
-//
-//    }
+    private fun validate(){
+        binding.apply {
+            when{
+                selectedUri == null -> {
+                    showErrorMsg("select photo")
+                }
+                etCompanyName.isStringEmpty() ->{
+                    showErrorMsg("fill name")
+                }
 
-//    private fun signWithFirebase(){
-//        binding.apply {
-//            val intent = Intent(requireContext(), AddUserService::class.java)
-//
-//            val user = UserModel(
-//                email = etEmail.getString(),
-//                password = etPass.getString(),
-//                name = etFullName.getString(),
-//                mobile = etPhoneNumber.getString(),
-//                userType = UserType.User.value,
-//                specialization = spinnerSpecialization.selectedItem.toString(),
-//                birthdate = SimpleDateFormat("dd MM yyyy").format(selectedDate),
-//                isMale = rbMale.isChecked
-//            )
-//            intent.putExtra(FirebaseHelp.USERS, user)
-//
-//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//                requireContext().startForegroundService(intent);
-//            } else {
-//                requireContext().startService(intent);
-//            }
-//            requireContext().showMessage("uploading your data")
-//            findNavController().popBackStack()
-//        }
-//    }
+                etMobileNumber.isStringEmpty() ->{
+                    showErrorMsg("fill mobile number")
+                }
+
+                branchAdapter.list.isEmpty() ->{
+                    showErrorMsg("add branch")
+                }
+
+                etAddress.isStringEmpty() ->{
+                    showErrorMsg("fill address")
+                }
+
+                etAbout.isStringEmpty() ->{
+                    showErrorMsg("fill about company")
+                }
+
+                selectedLocation == null ->{
+                    showErrorMsg("select location")
+                }
+
+                isValidEmail(etEmail.getString()).not() ->{
+                    showErrorMsg("invalid email")
+                }
+
+                listOfUsers.none { e -> e.email == etEmail.getString() }.not() ->{
+                    showErrorMsg("this email already in use")
+                }
+
+                etPassword.isStringEmpty() ->{
+                    showErrorMsg("fill password")
+                }
+
+                etPassword.getString() != etConfirmPassword.getString() ->{
+                    showErrorMsg("invalid confirmation password")
+                }
+                else->{
+                    signWithFirebase()
+                }
+
+            }
+        }
+
+    }
+
+    private fun signWithFirebase(){
+        binding.apply {
+            val intent = Intent(requireContext(), AddUserService::class.java)
+
+            val user = UserModel(
+                email = etEmail.getString(),
+                password = etPassword.getString(),
+                name = etCompanyName.getString(),
+                mobile = etMobileNumber.getString(),
+                userType = UserType.Company.value,
+                uri = selectedUri,
+                listOfBranches = branchAdapter.list,
+                address = etAddress.getString(),
+                companyWebsite = etWebsite.getString(),
+                about = etAbout.getString(),
+                location = selectedLocation
+            )
+            intent.putExtra(FirebaseHelp.USERS, user)
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                requireContext().startForegroundService(intent);
+            } else {
+                requireContext().startService(intent);
+            }
+            requireContext().showMessage("uploading your data")
+            findNavController().popBackStack()
+        }
+    }
 
     private fun getData(){
         showLoading()
