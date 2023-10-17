@@ -59,6 +59,12 @@
         <item name="backgroundTint">#2363F5</item>
     </style>
 
+    <style name="roundedButton2" parent="">
+        <item name="cornerRadius">4dp</item>
+        <item name="backgroundTint">#2D2D2D</item>
+    </style>
+
+
     <style name="RoundedImageView.3dp" parent="">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">3dp</item>

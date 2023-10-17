@@ -1,22 +1,69 @@
 package com.employment.employment.feature.userDashboard
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
+
 import android.view.View
-import android.view.ViewGroup
-import com.employment.employment.R
+import androidx.navigation.fragment.findNavController
+import com.employment.employment.common.base.BaseFragment
+import com.employment.employment.common.firebase.FirebaseHelp
+import com.employment.employment.common.firebase.data.UserModel
+import com.employment.employment.common.firebase.data.UserType
+import com.employment.employment.databinding.FragmentUserHomeBinding
+import com.google.android.material.tabs.TabLayout
 
 
-class UserHomeFragment : Fragment() {
+class UserHomeFragment : BaseFragment<FragmentUserHomeBinding>() {
 
+    private var users : MutableList<UserModel>? = null
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_user_home, container, false)
+    private val adapter : CompaniesAdapter by lazy {
+        CompaniesAdapter{
+            findNavController().navigate(UserHomeFragmentDirections.actionUserHomeFragmentToCompanyDetailsFragment(it))
+        }
     }
+    override fun initBinding()= FragmentUserHomeBinding.inflate(layoutInflater)
+
+    override fun onFragmentCreated() {
+        getAllCompanies()
+        addTabListener()
+    }
+
+
+    private fun getAllCompanies() {
+        showLoading()
+        FirebaseHelp.getAllObjects<UserModel>(FirebaseHelp.USERS, { allUsers ->
+            users = allUsers
+            hideLoading()
+            users?.let {
+                adapter.submitList(users?.filter { e -> e.userType == UserType.Company.value })
+            }
+        }, {
+            hideLoading()
+            showErrorMsg(it)
+        })
+    }
+
+    private fun addTabListener(){
+        binding.apply {
+            rvCompanies.adapter = adapter
+            tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+                override fun onTabSelected(tab: TabLayout.Tab?) {
+                    when (tab?.position) {
+                        0 -> {
+                            rvCompanies.visibility = View.VISIBLE
+                            rvJobs.visibility = View.GONE
+                        }
+                        1 -> {
+                            rvCompanies.visibility = View.GONE
+                            rvJobs.visibility = View.VISIBLE
+                        }
+                    }
+                }
+
+                override fun onTabUnselected(tab: TabLayout.Tab?) {}
+                override fun onTabReselected(tab: TabLayout.Tab?) {}
+            })
+        }
+    }
+
 
 }

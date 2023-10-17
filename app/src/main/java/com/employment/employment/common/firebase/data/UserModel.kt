@@ -22,7 +22,10 @@ data class UserModel(
     var about:String?="",
     var location:SelectedLocation?= null,
     var companyWebsite:String?=""
-) : Parcelable
+) : Parcelable {
+
+    fun getFullName() = "$firstName $lastName"
+}
 
 
 enum class UserType(val value:String){

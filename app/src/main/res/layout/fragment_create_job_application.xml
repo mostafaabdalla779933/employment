@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".feature.CreateJobApplicationFragment">
+    tools:context=".feature.createJobApp.CreateJobApplicationFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -16,6 +16,7 @@
             android:layout_height="30dp"
             android:layout_marginStart="15dp"
             android:layout_marginTop="15dp"
+            app:contentPadding="9dp"
             android:background="#1A2363F5"
             android:src="@drawable/back"
             app:layout_constraintStart_toStartOf="parent"
@@ -57,11 +58,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="22dp"
-                android:background="@drawable/bg_edit_text"
                 android:hint="Job name"
                 android:inputType="text"
-                android:paddingHorizontal="20dp"
-                android:paddingVertical="16dp" />
+                style="@style/EditText.edit"
+                android:padding="14dp"/>
 
             <EditText
                 android:id="@+id/et_job_location"
@@ -69,11 +69,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/bg_edit_text"
                 android:hint="Job location"
                 android:inputType="text"
-                android:paddingHorizontal="20dp"
-                android:paddingVertical="16dp" />
+                style="@style/EditText.edit"
+                android:padding="14dp" />
 
             <EditText
                 android:id="@+id/et_job_description"
@@ -83,12 +82,12 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/bg_edit_text"
                 android:gravity="start|top"
+                android:textColorHint="#30003233"
                 android:hint="Description"
                 android:inputType="textMultiLine"
                 android:minLines="4"
-                android:paddingHorizontal="20dp"
-                android:paddingVertical="16dp"
-                android:singleLine="false" />
+                android:maxLines="4"
+                android:padding="14dp" />
 
             <EditText
                 android:id="@+id/et_job_conditions"
@@ -96,11 +95,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/bg_edit_text"
                 android:hint="Conditions"
                 android:inputType="text"
-                android:paddingHorizontal="20dp"
-                android:paddingVertical="16dp" />
+                style="@style/EditText.edit"
+                android:padding="14dp" />
 
             <EditText
                 android:id="@+id/et_job_requirement"
@@ -108,11 +106,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/bg_edit_text"
                 android:hint="Requirement"
                 android:inputType="text"
-                android:paddingHorizontal="20dp"
-                android:paddingVertical="16dp" />
+                style="@style/EditText.edit"
+                android:padding="14dp"  />
 
             <EditText
                 android:id="@+id/et_job_salary"
@@ -120,11 +117,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/bg_edit_text"
                 android:hint="Salary (Optional)"
                 android:inputType="number"
-                android:paddingHorizontal="20dp"
-                android:paddingVertical="16dp" />
+                style="@style/EditText.edit"
+                android:padding="14dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -261,11 +257,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/bg_edit_text"
                 android:hint="Benefits (Optional)"
                 android:inputType="text"
-                android:paddingHorizontal="20dp"
-                android:paddingVertical="16dp" />
+                style="@style/EditText.edit"
+                android:padding="14dp"  />
 
             <EditText
                 android:id="@+id/et_job_vacations"
@@ -273,11 +268,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/bg_edit_text"
                 android:hint="Vacations and holidays (Optional)"
                 android:inputType="number"
-                android:paddingHorizontal="20dp"
-                android:paddingVertical="16dp" />
+                style="@style/EditText.edit"
+                android:padding="14dp"  />
 
             <EditText
                 android:id="@+id/et_job_nationality"
@@ -285,11 +279,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/bg_edit_text"
                 android:hint="Nationality (Optional)"
                 android:inputType="number"
-                android:paddingHorizontal="20dp"
-                android:paddingVertical="16dp" />
+                style="@style/EditText.edit"
+                android:padding="14dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -389,7 +382,8 @@
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="40dp"
-                android:paddingVertical="8dp"
+                android:paddingVertical="15dp"
+                android:textAllCaps="false"
                 android:text="New Job"
                 android:textSize="18sp" />
         </androidx.appcompat.widget.LinearLayoutCompat>

@@ -14,6 +14,7 @@
         android:layout_marginTop="15dp"
         android:background="#1A2363F5"
         android:src="@drawable/back"
+        app:contentPadding="9dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:shapeAppearance="@style/RoundedImageView.3dp" />

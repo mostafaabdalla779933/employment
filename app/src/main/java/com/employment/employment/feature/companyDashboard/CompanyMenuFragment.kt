@@ -1,16 +1,16 @@
-package com.employment.employment.feature.userDashboard
+package com.employment.employment.feature.companyDashboard
+
 
 import android.content.Intent
 import androidx.navigation.fragment.findNavController
 import com.employment.employment.common.base.BaseFragment
 import com.employment.employment.common.firebase.FirebaseHelp
-import com.employment.employment.databinding.FragmentUserMenuBinding
+import com.employment.employment.databinding.FragmentCompanyMenuBinding
 import com.employment.employment.feature.MainActivity
-import com.employment.employment.feature.companyDashboard.CompanyMenuFragmentDirections
 
 
-class UserMenuFragment : BaseFragment<FragmentUserMenuBinding>(){
-    override fun initBinding()=FragmentUserMenuBinding.inflate(layoutInflater)
+class CompanyMenuFragment : BaseFragment<FragmentCompanyMenuBinding>() {
+    override fun initBinding() = FragmentCompanyMenuBinding.inflate(layoutInflater)
 
     override fun onFragmentCreated() {
         setActions()
@@ -25,10 +25,13 @@ class UserMenuFragment : BaseFragment<FragmentUserMenuBinding>(){
                 requireActivity().finish()
             }
 
-            tvFullName.text = FirebaseHelp.user?.getFullName() ?: ""
-            tvEmail.text = FirebaseHelp.user?.email ?: ""
+            tvCreateJobApp.setOnClickListener {
+                findNavController().navigate(CompanyMenuFragmentDirections.actionCompanyMenuFragmentToCreateJobApplicationFragment())
+            }
+
 
         }
     }
+
 
 }

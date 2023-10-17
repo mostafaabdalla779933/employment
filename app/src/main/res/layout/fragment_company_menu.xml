@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/white"
-    tools:context=".feature.userDashboard.UserMenuFragment">
+    android:orientation="vertical"
+    tools:context=".feature.companyDashboard.CompanyMenuFragment">
 
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -47,37 +46,18 @@
 
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="User name"
-        android:textColor="#C5C5C5"
-        android:layout_marginTop="15dp"
-        android:layout_marginStart="15dp"
-        android:textSize="12sp"/>
-
-
-    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="15dp"
-        android:layout_marginTop="7dp"
+        android:layout_margin="15dp"
         android:background="@drawable/bg_rounded_border"
         android:drawablePadding="14dp"
         android:padding="15dp"
-        tools:text="Mohamed Abuallah"
-        android:id="@+id/tvFullName"
+        android:text="Create Job application"
+        android:id="@+id/tvCreateJobApp"
         android:textColor="@color/black"
         android:textSize="15sp"
-        app:drawableStartCompat="@drawable/ic_profile" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Email"
-        android:textColor="#C5C5C5"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="15dp"
-        android:textSize="12sp"/>
+        app:drawableEndCompat="@drawable/arrw_right"
+        app:drawableStartCompat="@drawable/ic_add_sec" />
 
     <TextView
         android:layout_width="match_parent"
@@ -86,12 +66,12 @@
         android:background="@drawable/bg_rounded_border"
         android:drawablePadding="14dp"
         android:padding="15dp"
-        android:layout_marginTop="7dp"
-        android:id="@+id/tvEmail"
-        tools:text="mohamed@gmail.com"
+        android:id="@+id/tvMyJobApps"
+        android:text="My Job applications"
         android:textColor="@color/black"
         android:textSize="15sp"
-        app:drawableStartCompat="@drawable/ic_email" />
+        app:drawableEndCompat="@drawable/arrw_right"
+        app:drawableStartCompat="@drawable/ic_job_form" />
 
 
     <com.google.android.material.button.MaterialButton

@@ -9,7 +9,15 @@
         android:id="@+id/userHomeFragment"
         android:name="com.employment.employment.feature.userDashboard.UserHomeFragment"
         android:label="fragment_user_home"
-        tools:layout="@layout/fragment_user_home" />
+        tools:layout="@layout/fragment_user_home" >
+        <action
+            android:id="@+id/action_userHomeFragment_to_companyDetailsFragment"
+            app:destination="@id/companyDetailsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
     <fragment
         android:id="@+id/userMenuFragment"
         android:name="com.employment.employment.feature.userDashboard.UserMenuFragment"
@@ -20,4 +28,15 @@
         android:name="com.employment.employment.feature.userDashboard.UserResumeFragment"
         android:label="fragment_user_resume"
         tools:layout="@layout/fragment_user_resume" />
+    <fragment
+        android:id="@+id/companyDetailsFragment"
+        android:name="com.employment.employment.feature.companyDetails.CompanyDetailsFragment"
+        android:label="fragment_company_details"
+        tools:layout="@layout/fragment_company_details" >
+
+        <argument
+            android:name="company"
+            app:argType="com.employment.employment.common.firebase.data.UserModel"/>
+
+    </fragment>
 </navigation>
