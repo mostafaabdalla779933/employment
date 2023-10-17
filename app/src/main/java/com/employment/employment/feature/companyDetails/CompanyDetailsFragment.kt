@@ -5,12 +5,12 @@ import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.employment.employment.common.base.BaseFragment
 import com.employment.employment.databinding.FragmentCompanyDetailsBinding
-import com.employment.employment.feature.CompanyDetailsFragmentArgs
+
 
 
 class CompanyDetailsFragment : BaseFragment<FragmentCompanyDetailsBinding>() {
 
-    val args: CompanyDetailsFragmentArgs by navArgs()
+    private val args: CompanyDetailsFragmentArgs by navArgs()
     override fun initBinding()= FragmentCompanyDetailsBinding.inflate(layoutInflater)
 
     override fun onFragmentCreated() {

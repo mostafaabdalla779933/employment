@@ -1,22 +1,24 @@
 package com.employment.employment.feature.userDashboard
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import com.employment.employment.R
+
+import androidx.navigation.fragment.findNavController
+import com.employment.employment.common.base.BaseFragment
+import com.employment.employment.databinding.FragmentUserResumeBinding
 
 
-class UserResumeFragment : Fragment() {
+class UserResumeFragment : BaseFragment<FragmentUserResumeBinding>() {
+    override fun initBinding() = FragmentUserResumeBinding.inflate(layoutInflater)
 
+    override fun onFragmentCreated() {
+        binding.apply {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_user_resume, container, false)
+            tvMyResume.setOnClickListener {
+                findNavController().navigate(UserResumeFragmentDirections.actionUserResumeFragmentToMyResumeFragment())
+            }
+
+            tvAddResume.setOnClickListener {
+
+            }
+        }
     }
-
 }

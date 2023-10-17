@@ -27,7 +27,15 @@
         android:id="@+id/userResumeFragment"
         android:name="com.employment.employment.feature.userDashboard.UserResumeFragment"
         android:label="fragment_user_resume"
-        tools:layout="@layout/fragment_user_resume" />
+        tools:layout="@layout/fragment_user_resume" >
+        <action
+            android:id="@+id/action_userResumeFragment_to_myResumeFragment"
+            app:destination="@id/myResumeFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
     <fragment
         android:id="@+id/companyDetailsFragment"
         android:name="com.employment.employment.feature.companyDetails.CompanyDetailsFragment"
@@ -39,4 +47,9 @@
             app:argType="com.employment.employment.common.firebase.data.UserModel"/>
 
     </fragment>
+    <fragment
+        android:id="@+id/myResumeFragment"
+        android:name="com.employment.employment.feature.MyResumeFragment"
+        android:label="fragment_my_resume"
+        tools:layout="@layout/fragment_my_resume" />
 </navigation>
