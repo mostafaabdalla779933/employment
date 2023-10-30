@@ -1,22 +1,12 @@
 package com.employment.employment.feature
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import com.employment.employment.R
+import com.employment.employment.common.base.BaseFragment
+import com.employment.employment.databinding.FragmentMyResumeBinding
 
+class MyResumeFragment : BaseFragment<FragmentMyResumeBinding>() {
+    override fun initBinding() = FragmentMyResumeBinding.inflate(layoutInflater)
 
-class MyResumeFragment : Fragment() {
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_my_resume, container, false)
+    override fun onFragmentCreated() {
     }
-
 
 }

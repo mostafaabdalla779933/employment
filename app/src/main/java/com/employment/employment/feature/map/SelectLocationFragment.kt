@@ -10,7 +10,6 @@ import android.provider.Settings
 import android.view.View
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.employment.employment.common.base.BaseFragment
 import com.employment.employment.common.firebase.data.SelectedLocation
