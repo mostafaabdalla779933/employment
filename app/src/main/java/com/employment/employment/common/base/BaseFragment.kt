@@ -122,7 +122,6 @@ abstract class BaseFragment<V : ViewBinding>
             viewLifecycleOwner,  // LifecycleOwner
             callback
         )
-
     }
 
 }
