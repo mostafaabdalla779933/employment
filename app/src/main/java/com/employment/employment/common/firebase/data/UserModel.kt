@@ -89,6 +89,24 @@ enum class UserState(val value: String) {
     Pending("Pending"), Accepted("Accepted"), Rejected("Rejected")
 }
 
+@Parcelize
+data class JobModel(
+    val hashed:String?="",
+    var name: String? = "",
+    var location: String? = "",
+    var desc: String? = "",
+    var conditions: String? = "",
+    var requirement: String? = "",
+    var salary: String? = "",
+    var workingFrom: String? = "",
+    var workingTo: String? = "",
+    var vacations: String? = "",
+    var nationality: String? = "",
+    var age: String? = "",
+    var experience: String? = "",
+    var jobType: String? = "",
+    var company: UserModel? = null
+) : Parcelable
 
 @Parcelize
 data class BranchModel(
