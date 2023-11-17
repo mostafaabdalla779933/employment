@@ -76,6 +76,15 @@ val listOfExperience = listOf(
     "1-3 years"
 )
 
+
+val listOfNationality = listOf(
+    "Kuwait",
+    "saudi arabia",
+    "Egyptian",
+    "India"
+)
+
+
 enum class UserState(val value: String) {
     Pending("Pending"), Accepted("Accepted"), Rejected("Rejected")
 }
