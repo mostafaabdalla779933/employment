@@ -71,6 +71,11 @@ val listOfWorkTime = listOf(
     "Part time"
 )
 
+val listOfExperience = listOf(
+    "Fresh",
+    "1-3 years"
+)
+
 enum class UserState(val value: String) {
     Pending("Pending"), Accepted("Accepted"), Rejected("Rejected")
 }
