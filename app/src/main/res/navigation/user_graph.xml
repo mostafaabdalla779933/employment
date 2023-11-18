@@ -13,6 +13,15 @@
         <action
             android:id="@+id/action_userHomeFragment_to_companyDetailsFragment"
             app:destination="@id/companyDetailsFragment"
+            app:popUpTo="@id/userHomeFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_userHomeFragment_to_jobDetailsFragment"
+            app:destination="@id/jobDetailsFragment"
+            app:popUpTo="@id/userHomeFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
@@ -64,4 +73,13 @@
         android:name="com.employment.employment.feature.resume.AddResumeFragment"
         android:label="fragment_add_resume"
         tools:layout="@layout/fragment_add_resume" />
+    <fragment
+        android:id="@+id/jobDetailsFragment"
+        android:name="com.employment.employment.feature.JobDetailsFragment"
+        android:label="fragment_job_details"
+        tools:layout="@layout/fragment_job_details" >
+        <argument
+            android:name="job"
+            app:argType="com.employment.employment.common.firebase.data.JobModel" />
+    </fragment>
 </navigation>

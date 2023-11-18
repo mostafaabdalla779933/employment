@@ -214,39 +214,22 @@
             app:layout_constraintStart_toEndOf="@+id/tv_job_salary"
             app:layout_constraintTop_toBottomOf="@id/tv_job_requirement" />
 
-        <LinearLayout
-            android:id="@+id/ll_job_hours"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="24dp"
-            android:background="@drawable/bg_tv_company_details"
-            android:orientation="horizontal"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="12dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/tv_job_salary"
-            app:layout_constraintTop_toBottomOf="@id/tv_salary">
-
             <TextView
                 android:id="@+id/tv_job_hours"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="24dp"
                 android:textColor="#000000"
-                android:textSize="16sp"
-                tools:text="8" />
-
-            <TextView
-                android:id="@+id/tv_job_hours_from_to"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:textColor="#000000"
-                android:textSize="16sp"
-                tools:text="10 AM : 6 PM" />
-
-        </LinearLayout>
+                android:textSize="12sp"
+                android:background="@drawable/bg_tv_company_details"
+                tools:text="10 AM : 6 PM"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tv_job_salary"
+                app:layout_constraintTop_toTopOf="@id/tv_job_salary"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_job_salary"/>
 
         <TextView
             android:id="@+id/tv_vacations"
@@ -257,7 +240,7 @@
             android:textColor="#A5A5A5"
             android:textSize="13sp"
             app:layout_constraintStart_toStartOf="@id/tv_job_requirement"
-            app:layout_constraintTop_toBottomOf="@id/ll_job_hours" />
+            app:layout_constraintTop_toBottomOf="@id/tv_job_hours" />
 
         <TextView
             android:id="@+id/tv_job_vacations"
