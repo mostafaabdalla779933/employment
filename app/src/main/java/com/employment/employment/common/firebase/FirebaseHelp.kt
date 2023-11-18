@@ -21,6 +21,7 @@ object FirebaseHelp {
 
     var user: UserModel? =  null
     const val USERS = "all_users"
+    const val JOBS  = "all_jobs"
 
     const val PRODUCT_TAKEN = "PRODUCT_TAKEN"
 

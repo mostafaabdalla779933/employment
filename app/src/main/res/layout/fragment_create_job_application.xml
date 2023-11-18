@@ -49,7 +49,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="56dp"
-                android:text="Compelete this form and create new job"
+                android:text="Complete this form and create new job"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
 
@@ -83,7 +83,7 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/bg_edit_text"
                 android:gravity="start|top"
-                android:textColorHint="#30003233"
+                style="@style/EditText.edit"
                 android:hint="Description"
                 android:inputType="textMultiLine"
                 android:minLines="4"
@@ -128,7 +128,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="20dp"
-                android:text="Working hours (Optional)"
+                android:text="Working hours"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
@@ -147,49 +147,18 @@
                     android:textColor="@color/black"
                     android:textSize="16sp" />
 
-                <TextView
-                    android:id="@+id/tv_from_hour"
+                <EditText
+                    android:id="@+id/et_from_hour"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="38dp"
                     android:background="@drawable/bg_tv_time"
                     android:paddingHorizontal="16dp"
                     android:paddingVertical="18dp"
-                    android:text="00"
-                    android:textColor="#E3E3E3"
-                    android:textSize="16sp" />
+                    android:editable="false"
+                    android:hint="00:00 Am"
+                    style="@style/EditText.edit" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="11dp"
-                    android:text=":"
-                    android:textColor="#E3E3E3"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:id="@+id/tv_from_minute"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="11dp"
-                    android:background="@drawable/bg_tv_time"
-                    android:paddingHorizontal="16dp"
-                    android:paddingVertical="18dp"
-                    android:text="00"
-                    android:textColor="#E3E3E3"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:id="@+id/tv_from_am_pm"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="11dp"
-                    android:background="@drawable/bg_tv_time"
-                    android:paddingHorizontal="16dp"
-                    android:paddingVertical="18dp"
-                    android:text="PM"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
             </androidx.appcompat.widget.LinearLayoutCompat>
 
             <androidx.appcompat.widget.LinearLayoutCompat
@@ -207,49 +176,17 @@
                     android:textColor="@color/black"
                     android:textSize="16sp" />
 
-                <TextView
-                    android:id="@+id/tv_to_hour"
+                <EditText
+                    android:id="@+id/et_to_hour"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="56dp"
                     android:background="@drawable/bg_tv_time"
                     android:paddingHorizontal="16dp"
                     android:paddingVertical="18dp"
-                    android:text="00"
-                    android:textColor="#E3E3E3"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="11dp"
-                    android:text=":"
-                    android:textColor="#E3E3E3"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:id="@+id/tv_to_minute"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="11dp"
-                    android:background="@drawable/bg_tv_time"
-                    android:paddingHorizontal="16dp"
-                    android:paddingVertical="18dp"
-                    android:text="00"
-                    android:textColor="#E3E3E3"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:id="@+id/tv_to_am_pm"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="11dp"
-                    android:background="@drawable/bg_tv_time"
-                    android:paddingHorizontal="16dp"
-                    android:paddingVertical="18dp"
-                    android:text="PM"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
+                    android:editable="false"
+                    android:hint="00:00 Pm"
+                    style="@style/EditText.edit"  />
             </androidx.appcompat.widget.LinearLayoutCompat>
 
             <EditText
@@ -274,72 +211,41 @@
                 style="@style/EditText.edit"
                 android:padding="14dp"  />
 
-            <EditText
-                android:id="@+id/et_job_nationality"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="20dp"
+                android:text="Nationality"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <Spinner
+                android:id="@+id/spinner_nationality"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
-                android:layout_marginTop="20dp"
-                android:hint="Nationality (Optional)"
-                android:inputType="number"
-                style="@style/EditText.edit"
-                android:padding="14dp" />
+                android:layout_marginTop="12dp"
+                android:popupBackground="@drawable/bg_text_view"
+                android:background="@drawable/bg_text_view" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="20dp"
-                android:text="Age (Optional)"
+                android:text="Age"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
-            <androidx.appcompat.widget.LinearLayoutCompat
+            <Spinner
+                android:id="@+id/spinner_age"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:text="From"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:id="@+id/tv_from_age"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:background="@drawable/bg_tv_time"
-                    android:paddingHorizontal="40dp"
-                    android:paddingVertical="18dp"
-                    android:text="00"
-                    android:textColor="#E3E3E3"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:text="To"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:id="@+id/tv_to_age"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:background="@drawable/bg_tv_time"
-                    android:paddingHorizontal="40dp"
-                    android:paddingVertical="18dp"
-                    android:text="00"
-                    android:textColor="#E3E3E3"
-                    android:textSize="16sp" />
-            </androidx.appcompat.widget.LinearLayoutCompat>
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="12dp"
+                android:popupBackground="@drawable/bg_text_view"
+                android:background="@drawable/bg_text_view" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -356,7 +262,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="12dp"
-                android:background="@drawable/bg_tv_time" />
+                android:popupBackground="@drawable/bg_text_view"
+                android:background="@drawable/bg_text_view"  />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -373,7 +280,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="12dp"
-                android:background="@drawable/bg_tv_time" />
+                android:popupBackground="@drawable/bg_text_view"
+                android:background="@drawable/bg_text_view" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_new_job"

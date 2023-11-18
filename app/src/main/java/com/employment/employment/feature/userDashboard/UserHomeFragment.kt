@@ -5,6 +5,7 @@ import android.view.View
 import androidx.navigation.fragment.findNavController
 import com.employment.employment.common.base.BaseFragment
 import com.employment.employment.common.firebase.FirebaseHelp
+import com.employment.employment.common.firebase.data.JobModel
 import com.employment.employment.common.firebase.data.UserModel
 import com.employment.employment.common.firebase.data.UserType
 import com.employment.employment.databinding.FragmentUserHomeBinding
@@ -13,17 +14,34 @@ import com.google.android.material.tabs.TabLayout
 
 class UserHomeFragment : BaseFragment<FragmentUserHomeBinding>() {
 
-    private var users : MutableList<UserModel>? = null
+    private var users: MutableList<UserModel>? = null
 
-    private val adapter : CompaniesAdapter by lazy {
-        CompaniesAdapter{
-            findNavController().navigate(UserHomeFragmentDirections.actionUserHomeFragmentToCompanyDetailsFragment(it))
+    private val companiesAdapter: CompaniesAdapter by lazy {
+        CompaniesAdapter {
+            findNavController().navigate(
+                UserHomeFragmentDirections.actionUserHomeFragmentToCompanyDetailsFragment(
+                    it
+                )
+            )
         }
     }
-    override fun initBinding()= FragmentUserHomeBinding.inflate(layoutInflater)
+
+    private val jobsAdapter: JobsAdapter by lazy {
+        JobsAdapter {
+            findNavController().navigate(
+                UserHomeFragmentDirections
+                    .actionUserHomeFragmentToJobDetailsFragment(
+                        it
+                    )
+            )
+        }
+    }
+
+    override fun initBinding() = FragmentUserHomeBinding.inflate(layoutInflater)
 
     override fun onFragmentCreated() {
         getAllCompanies()
+        getAllJobs()
         addTabListener()
     }
 
@@ -34,7 +52,7 @@ class UserHomeFragment : BaseFragment<FragmentUserHomeBinding>() {
             users = allUsers
             hideLoading()
             users?.let {
-                adapter.submitList(users?.filter { e -> e.userType == UserType.Company.value })
+                companiesAdapter.submitList(users?.filter { e -> e.userType == UserType.Company.value })
             }
         }, {
             hideLoading()
@@ -42,9 +60,21 @@ class UserHomeFragment : BaseFragment<FragmentUserHomeBinding>() {
         })
     }
 
-    private fun addTabListener(){
+    private fun getAllJobs() {
+        showLoading()
+        FirebaseHelp.getAllObjects<JobModel>(FirebaseHelp.JOBS, { allJos ->
+            hideLoading()
+            jobsAdapter.submitList(allJos)
+        }, {
+            hideLoading()
+            showErrorMsg(it)
+        })
+    }
+
+    private fun addTabListener() {
         binding.apply {
-            rvCompanies.adapter = adapter
+            rvCompanies.adapter = companiesAdapter
+            binding.rvJobs.adapter = jobsAdapter
             tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
                 override fun onTabSelected(tab: TabLayout.Tab?) {
                     when (tab?.position) {
@@ -52,6 +82,7 @@ class UserHomeFragment : BaseFragment<FragmentUserHomeBinding>() {
                             rvCompanies.visibility = View.VISIBLE
                             rvJobs.visibility = View.GONE
                         }
+
                         1 -> {
                             rvCompanies.visibility = View.GONE
                             rvJobs.visibility = View.VISIBLE
