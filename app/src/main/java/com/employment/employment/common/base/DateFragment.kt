@@ -23,13 +23,16 @@ class DateFragment(private var listener: DatePickerDialog.OnDateSetListener) : D
             )
         }
 
+        // Set the max date to 20 years ago
+        val maxDate = Calendar.getInstance()
+        maxDate.add(Calendar.YEAR, -20)
 
         Calendar.getInstance().apply {
             DatePickerDialog(
                 requireContext(),
                 listener, get(Calendar.YEAR), get(Calendar.MONTH), get(Calendar.DAY_OF_MONTH)
             ).let { datePickerDialog ->
-                datePickerDialog.datePicker.maxDate = System.currentTimeMillis() - 1000
+                datePickerDialog.datePicker.maxDate = maxDate.timeInMillis
                 datePickerDialog.window?.requestFeature(Window.FEATURE_ACTION_BAR_OVERLAY)
                 return datePickerDialog
             }

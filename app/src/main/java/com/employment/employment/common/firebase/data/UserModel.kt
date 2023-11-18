@@ -3,6 +3,7 @@ package com.employment.employment.common.firebase.data
 import android.net.Uri
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
+import java.util.Calendar
 
 
 @Parcelize
@@ -26,6 +27,16 @@ data class UserModel(
 
     fun getFullName() = "$firstName $lastName"
 }
+
+@Parcelize
+data class QualificationModel(
+    var qualification:String? = "",
+    var graduationCountry:String? = "",
+    var graduationUniversity:String? = "",
+    var graduationGrade:String? = "",
+    var collegeName:String? = "",
+    var graduationYear:String? = "",
+): Parcelable
 
 
 enum class UserType(val value: String) {
@@ -75,6 +86,13 @@ val listOfExperience = listOf(
     "Fresh",
     "1-3 years"
 )
+
+fun generateYearsList(): List<String> {
+    val currentYear = Calendar.getInstance().get(Calendar.YEAR)
+    val startYear = 1960
+
+    return (startYear..currentYear).toList().reversed().map { it.toString() }
+}
 
 
 val listOfNationality = listOf(

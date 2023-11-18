@@ -72,7 +72,16 @@
         android:id="@+id/addResumeFragment"
         android:name="com.employment.employment.feature.resume.AddResumeFragment"
         android:label="fragment_add_resume"
-        tools:layout="@layout/fragment_add_resume" />
+        tools:layout="@layout/fragment_add_resume" >
+        <action
+            android:id="@+id/action_addResumeFragment_to_addQualificationFragment"
+            app:destination="@id/addQualificationFragment" />
+    </fragment>
+
+    <dialog
+        android:id="@+id/addQualificationFragment"
+        android:name="com.employment.employment.feature.resume.AddQualificationFragment"
+        android:label="AddQualificationFragment" />
     <fragment
         android:id="@+id/jobDetailsFragment"
         android:name="com.employment.employment.feature.JobDetailsFragment"
