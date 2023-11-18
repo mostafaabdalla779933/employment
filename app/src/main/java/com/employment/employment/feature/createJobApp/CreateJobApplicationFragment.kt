@@ -16,6 +16,7 @@ import com.employment.employment.common.firebase.data.JobModel
 import com.employment.employment.common.firebase.data.UserModel
 import com.employment.employment.common.firebase.data.listOfAges
 import com.employment.employment.common.firebase.data.listOfExperience
+import com.employment.employment.common.firebase.data.listOfJobs
 import com.employment.employment.common.firebase.data.listOfNationality
 import com.employment.employment.common.firebase.data.listOfWorkTime
 import com.employment.employment.common.getString
@@ -75,45 +76,55 @@ class CreateJobApplicationFragment : BaseFragment<FragmentCreateJobApplicationBi
 
     private fun initSpinners() {
         binding.apply {
+            val arrJobs = listOfJobs.toMutableList()
+            spinnerJobName.adapter = ArrayAdapter(
+                requireContext(),
+                R.layout.spinner_item,
+                arrJobs
+            )
+            spinnerJobName.setSelection(0, false)
+
+
             val arrNationality = listOfNationality.toMutableList()
-            arrNationality.add(0, "")
             spinnerNationality.adapter = ArrayAdapter(
                 requireContext(),
                 R.layout.spinner_item,
                 arrNationality
             )
+            spinnerNationality.setSelection(0, false)
 
             val arrAges = listOfAges.toMutableList()
-            arrAges.add(0, "")
             spinnerAge.adapter = ArrayAdapter(
                 requireContext(),
                 R.layout.spinner_item,
                 arrAges
             )
+            spinnerAge.setSelection(0, false)
 
             val arrExperience = listOfExperience.toMutableList()
-            arrExperience.add(0, "")
             spinnerExperience.adapter = ArrayAdapter(
                 requireContext(),
                 R.layout.spinner_item,
                 arrExperience
             )
+            spinnerExperience.setSelection(0, false)
+
 
             val arrWorkTime = listOfWorkTime.toMutableList()
-            arrWorkTime.add(0, "")
             spinnerWorkTime.adapter = ArrayAdapter(
                 requireContext(),
                 R.layout.spinner_item,
                 arrWorkTime
             )
+            spinnerWorkTime.setSelection(0, false)
         }
     }
 
     private fun validate() {
         binding.apply {
             when {
-                etJobName.isStringEmpty() -> {
-                    showErrorMsg("fill job Name")
+                spinnerJobName.selectedItem.toString().isEmpty() -> {
+                    showErrorMsg("select job")
                 }
 
                 etJobLocation.isStringEmpty() -> {
@@ -168,7 +179,7 @@ class CreateJobApplicationFragment : BaseFragment<FragmentCreateJobApplicationBi
             showLoading()
             val job = JobModel(
                 hashed = System.currentTimeMillis().toString(),
-                name = etJobName.getString(),
+                name = spinnerJobName.selectedItem.toString(),
                 location = etJobLocation.getString(),
                 desc = etJobDescription.getString(),
                 conditions = etJobConditions.getString(),

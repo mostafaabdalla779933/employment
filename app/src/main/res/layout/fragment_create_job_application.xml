@@ -53,16 +53,14 @@
                 android:textColor="@color/black"
                 android:textSize="16sp" />
 
-            <EditText
-                android:id="@+id/et_job_name"
+            <Spinner
+                android:id="@+id/spinner_job_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
-                android:layout_marginTop="22dp"
-                android:hint="Job name"
-                android:inputType="text"
-                style="@style/EditText.edit"
-                android:padding="14dp"/>
+                android:layout_marginTop="12dp"
+                android:popupBackground="@drawable/bg_text_view"
+                android:background="@drawable/bg_text_view" />
 
             <EditText
                 android:id="@+id/et_job_location"
