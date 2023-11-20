@@ -16,7 +16,6 @@ class CompanyMenuFragment : BaseFragment<FragmentCompanyMenuBinding>() {
         setActions()
     }
 
-
     private fun setActions() {
         binding.apply {
             btnLogout.setOnClickListener {
@@ -26,10 +25,18 @@ class CompanyMenuFragment : BaseFragment<FragmentCompanyMenuBinding>() {
             }
 
             tvCreateJobApp.setOnClickListener {
-                findNavController().navigate(CompanyMenuFragmentDirections.actionCompanyMenuFragmentToCreateJobApplicationFragment())
+                findNavController().navigate(
+                    CompanyMenuFragmentDirections
+                        .actionCompanyMenuFragmentToCreateJobApplicationFragment()
+                )
             }
 
-
+            tvMyJobApps.setOnClickListener {
+                findNavController().navigate(
+                    CompanyMenuFragmentDirections
+                        .actionCompanyMenuFragmentToCompanyJobApplicationsFragment()
+                )
+            }
         }
     }
 

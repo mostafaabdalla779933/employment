@@ -1,6 +1,7 @@
 package com.employment.employment.feature.companyDashboard
 
 
+import androidx.navigation.fragment.findNavController
 import com.employment.employment.common.base.BaseFragment
 import com.employment.employment.common.firebase.FirebaseHelp
 import com.employment.employment.common.firebase.data.UserModel
@@ -14,7 +15,10 @@ class CompanyHomeFragment : BaseFragment<FragmentCompanyHomeBinding>() {
     private var users : MutableList<UserModel>? = null
     private val adapter : EmployeesAdapter by lazy {
         EmployeesAdapter{
-
+            findNavController().navigate(
+                CompanyHomeFragmentDirections
+                    .actionCompanyHomeFragmentToEmployeeDetailsFragment(it)
+            )
         }
     }
     override fun initBinding() = FragmentCompanyHomeBinding.inflate(layoutInflater)
