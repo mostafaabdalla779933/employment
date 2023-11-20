@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="2dp"
+    android:background="@color/white"
+    app:cardCornerRadius="2dp"
+    app:strokeColor="#707070"
+    app:strokeWidth="1dp">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+
+        <ImageView
+            android:id="@+id/iv_close"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="end"
+            android:src="@drawable/ic_close"
+            app:tint="@color/red_EA1414" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Job title"
+            android:textColor="#A5A5A5"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tvJobTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_tv_company_details"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="12dp"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            tools:text="title" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Company name"
+            android:textColor="#A5A5A5"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tvCompanyName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_tv_company_details"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="12dp"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            tools:text="Company name" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Company website"
+            android:id="@+id/website"
+            android:textColor="#A5A5A5"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tvCompanyWebsite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_tv_company_details"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="12dp"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            tools:text="Company website" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Company number"
+            android:id="@+id/companyNumber"
+            android:textColor="#A5A5A5"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tvCompanyNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_tv_company_details"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="12dp"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            tools:text="Company number" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="About company"
+            android:textColor="#A5A5A5"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tvAboutCompany"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_tv_company_details"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="12dp"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            tools:text="About company" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Email"
+            android:textColor="#A5A5A5"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tvEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_tv_company_details"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="12dp"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            tools:text="Email" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Experience years"
+            android:textColor="#A5A5A5"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tvExperienceYears"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_tv_company_details"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="12dp"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            tools:text="Experience years" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Mobile"
+            android:textColor="#A5A5A5"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tvMobile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_tv_company_details"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="12dp"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            tools:text="Mobile" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</com.google.android.material.card.MaterialCardView>

@@ -76,6 +76,9 @@
         <action
             android:id="@+id/action_addResumeFragment_to_addQualificationFragment"
             app:destination="@id/addQualificationFragment" />
+        <action
+            android:id="@+id/action_addResumeFragment_to_addExperienceFragment"
+            app:destination="@id/addExperienceFragment" />
     </fragment>
 
     <dialog
@@ -91,4 +94,9 @@
             android:name="job"
             app:argType="com.employment.employment.common.firebase.data.JobModel" />
     </fragment>
+    <dialog
+        android:id="@+id/addExperienceFragment"
+        android:name="com.employment.employment.feature.resume.AddExperienceFragment"
+        android:label="fragment_add_experience"
+        tools:layout="@layout/fragment_add_experience" />
 </navigation>

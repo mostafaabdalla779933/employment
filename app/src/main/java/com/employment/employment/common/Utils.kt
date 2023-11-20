@@ -7,29 +7,29 @@ import android.content.pm.PackageManager
 import android.database.Cursor
 import android.graphics.Bitmap
 import android.graphics.Matrix
+import android.location.Geocoder
 import android.location.Location
 import android.location.LocationManager
 import android.media.ExifInterface
 import android.net.Uri
+import android.os.Looper
 import android.provider.MediaStore
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
-import com.google.android.material.textfield.TextInputEditText
-import java.util.regex.Pattern
-import java.math.RoundingMode
-import java.text.DecimalFormat
-import android.location.Geocoder
-import android.os.Looper
 import androidx.fragment.app.Fragment
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
+import com.google.android.material.textfield.TextInputEditText
+import java.math.RoundingMode
+import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
+import java.util.regex.Pattern
 
 
 fun TextInputEditText.getString(): String {
@@ -282,4 +282,39 @@ fun getDistance( startLatitude:Double?,startLongitude:Double?, endLatitude:Doubl
 }
 
 
+fun calculateDateDifferenceToLong(date1: Date?, date2: Date?): Long {
+    val calendar1 = Calendar.getInstance()
+    val calendar2 = Calendar.getInstance()
+    calendar1.time = date1
+    calendar2.time = date2
+
+    return calendar2.timeInMillis - calendar1.timeInMillis
+}
+
+
+fun Long.toYearsAndMonths():String{
+    val calendar = Calendar.getInstance()
+    calendar.setTimeInMillis(this)
+    val mYear: Int = calendar.get(Calendar.YEAR) - 1970
+    val mMonth: Int = calendar.get(Calendar.MONTH)
+
+    return if(mYear == 0 && mMonth == 0) "" else "$mYear Years $mMonth Month"
+}
+
+fun calculateDateDifference(date1: Date?, date2: Date?): String {
+    val calendar1 = Calendar.getInstance()
+    val calendar2 = Calendar.getInstance()
+    val calendar3 = Calendar.getInstance()
+
+    calendar1.time = date1
+    calendar2.time = date2
+
+    val diff = calendar2.timeInMillis - calendar1.timeInMillis
+
+    calendar3.setTimeInMillis(diff)
+    val mYear: Int = calendar3.get(Calendar.YEAR) - 1970
+    val mMonth: Int = calendar3.get(Calendar.MONTH)
+
+    return if(mYear == 0 && mMonth == 0) "" else "$mYear Years $mMonth Month"
+}
 

@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="2dp"
+    android:background="@color/white"
+    app:cardCornerRadius="15dp"
+    app:strokeColor="#707070"
+    app:strokeWidth="2dp"
+    tools:context=".feature.resume.AddExperienceFragment">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical"
+        android:scrollbarSize="2dp"
+        android:background="@color/white">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="14dp">
+
+        <ImageView
+            android:id="@+id/iv_close"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="end"
+            android:src="@drawable/ic_close" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="15dp"
+            android:text="Job title"
+            android:textColor="#000000"
+            android:textSize="13sp" />
+
+        <Spinner
+            android:id="@+id/spinnerJobTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_tv_time"
+            android:popupBackground="@color/white" />
+
+
+        <EditText
+            android:id="@+id/et_company_name"
+            style="@style/EditText.edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Company name"
+            android:inputType="text"
+            android:padding="14dp"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/et_company_website"
+            style="@style/EditText.edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Company website (Optional)"
+            android:inputType="textWebEmailAddress"
+            android:padding="14dp"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@+id/et_company_name" />
+
+        <EditText
+            android:id="@+id/et_Company_number"
+            style="@style/EditText.edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Company number (Optional)"
+            android:inputType="phone"
+            android:padding="14dp"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@+id/et_company_website" />
+
+        <EditText
+            android:id="@+id/et_about_company"
+            style="@style/EditText.edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="start|top"
+            android:hint="About company"
+            android:inputType="textMultiLine"
+            android:lines="4"
+            android:padding="14dp"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@+id/et_Company_number" />
+
+        <EditText
+            android:id="@+id/et_company_email"
+            style="@style/EditText.edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:padding="14dp"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@+id/et_about_company" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="15dp"
+            android:text="Join date (From):"
+            android:textColor="#000000"
+            android:textSize="13sp" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llStartDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:weightSum="3"
+            app:layout_constraintTop_toBottomOf="@+id/tv_from_date">
+
+            <TextView
+                android:id="@+id/tvDayPickerFromDate"
+                style="@style/EditText.edit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="day"
+                android:maxLines="1"
+                android:paddingHorizontal="17dp"
+                android:paddingVertical="12dp"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                app:drawableEndCompat="@drawable/ic_arrow_down" />
+
+            <TextView
+                android:id="@+id/tvMonthPickerFromDate"
+                style="@style/EditText.edit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:hint="Month"
+                android:maxLines="1"
+                android:paddingHorizontal="17dp"
+                android:paddingVertical="12dp"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                app:drawableEndCompat="@drawable/ic_arrow_down" />
+
+            <TextView
+                android:id="@+id/tvYearPickerFromDate"
+                style="@style/EditText.edit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:hint="Year"
+                android:maxLines="1"
+                android:paddingHorizontal="17dp"
+                android:paddingVertical="12dp"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                app:drawableEndCompat="@drawable/ic_arrow_down" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="15dp"
+            android:text="Join date (To):"
+            android:textColor="#000000"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="@+id/llStartDate"
+            app:layout_constraintTop_toBottomOf="@+id/llStartDate" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llEndDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:weightSum="3"
+            app:layout_constraintTop_toBottomOf="@+id/tv_to_date">
+
+            <TextView
+                android:id="@+id/tvDayPickerToDate"
+                style="@style/EditText.edit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="day"
+                android:maxLines="1"
+                android:paddingHorizontal="17dp"
+                android:paddingVertical="12dp"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                app:drawableEndCompat="@drawable/ic_arrow_down" />
+
+            <TextView
+                android:id="@+id/tvMonthPickerToDate"
+                style="@style/EditText.edit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:hint="Month"
+                android:maxLines="1"
+                android:paddingHorizontal="17dp"
+                android:paddingVertical="12dp"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                app:drawableEndCompat="@drawable/ic_arrow_down" />
+
+            <TextView
+                android:id="@+id/tvYearPickerToDate"
+                style="@style/EditText.edit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:hint="Year"
+                android:maxLines="1"
+                android:paddingHorizontal="17dp"
+                android:paddingVertical="12dp"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                app:drawableEndCompat="@drawable/ic_arrow_down" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <CheckBox
+            android:id="@+id/cb_present_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:padding="8dp"
+            android:textColor="@color/black"
+            android:text="Present date" />
+
+
+        <TextView
+            android:id="@+id/et_experience_years"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/EditText.edit"
+            android:textColor="#2363F5"
+            android:padding="14dp"
+            android:hint="Experience years"
+            android:inputType="text"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/cb_present_date"/>
+
+        <EditText
+            android:id="@+id/et_mobile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/EditText.edit"
+            android:textColor="@color/black"
+            android:padding="14dp"
+            android:hint="Mobile"
+            android:inputType="phone"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/et_experience_years"/>
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAdd"
+            style="@style/roundedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="16dp"
+            android:paddingVertical="15dp"
+            android:text="Add Experience"
+            android:textSize="18sp"
+            app:cornerRadius="4dp" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.core.widget.NestedScrollView>
+
+</com.google.android.material.card.MaterialCardView>

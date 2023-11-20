@@ -39,6 +39,22 @@ data class QualificationModel(
 ): Parcelable
 
 
+@Parcelize
+data class ExperienceModel(
+    var jobTitle:String? = "",
+    var companyName:String? = "",
+    var companyWebsite:String? = "",
+    var companyNumber:String? = "",
+    var companyAbout:String? = "",
+    var companyEmail:String? = "",
+    var startDate:String? = "",
+    var endDate:String? = "",
+    var present:Boolean? = false,
+    var experience: Long? = 0L,
+    var mobile:String?=""
+): Parcelable
+
+
 enum class UserType(val value: String) {
     User("User"), Company("Company")
 }

@@ -1,11 +1,8 @@
 package com.employment.employment.feature.createJobApp
 
 import android.app.TimePickerDialog
-import android.util.Log
 import android.view.Window
 import android.widget.ArrayAdapter
-import android.widget.EditText
-import android.widget.TextView
 import android.widget.TimePicker
 import androidx.navigation.fragment.findNavController
 import com.employment.employment.R
@@ -13,7 +10,6 @@ import com.employment.employment.common.base.BaseFragment
 import com.employment.employment.common.base.TimeFragment
 import com.employment.employment.common.firebase.FirebaseHelp
 import com.employment.employment.common.firebase.data.JobModel
-import com.employment.employment.common.firebase.data.UserModel
 import com.employment.employment.common.firebase.data.listOfAges
 import com.employment.employment.common.firebase.data.listOfExperience
 import com.employment.employment.common.firebase.data.listOfNationality
