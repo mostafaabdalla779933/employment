@@ -99,8 +99,11 @@ val listOfWorkTime = listOf(
 )
 
 val listOfExperience = listOf(
-    "Fresh",
-    "1-3 years"
+    "Fresh Graduated",
+    "1-3 years",
+    "4-5 years",
+    "more than 5 years",
+    "All"
 )
 
 fun generateYearsList(): List<String> {
