@@ -31,7 +31,7 @@ class EmployeeDetailsFragment : BaseFragment<FragmentEmployeeDetailsBinding>() {
                 .into(ivEmployee)
             tvEmployeeName.text = "${args.employee.firstName} ${args.employee.lastName}"
             tvEmployeeNumber.text = args.employee.mobile
-            //tvEmployeeJob.text = args.employee.
+            tvEmployeeJob.text = args.employee.resume?.listOfQualifications?.get(0)?.qualification ?: "IT"
         }
     }
 

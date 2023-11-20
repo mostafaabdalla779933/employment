@@ -23,11 +23,7 @@ import com.employment.employment.common.firebase.FirebaseHelp
 import com.employment.employment.common.firebase.data.ExperienceModel
 import com.employment.employment.common.firebase.data.QualificationModel
 import com.employment.employment.common.firebase.data.ResumeModel
-import com.employment.employment.common.firebase.data.UserModel
-import com.employment.employment.common.firebase.data.UserType
-import com.employment.employment.common.firebase.data.generateYearsList
 import com.employment.employment.common.firebase.data.listOfNationality
-import com.employment.employment.common.firebase.data.listOfQualifications
 import com.employment.employment.common.firebase.data.listOfResidencyTypes
 import com.employment.employment.common.getString
 import com.employment.employment.common.isStringEmpty
@@ -35,26 +31,26 @@ import com.employment.employment.common.isValidEmail
 import com.employment.employment.common.setImageFromUri
 import com.employment.employment.common.showMessage
 import com.employment.employment.databinding.FragmentAddResumeBinding
-import com.employment.employment.feature.auth.AddUserService
 import com.employment.employment.feature.resume.AddExperienceFragment.Companion.Experience
 import com.employment.employment.feature.resume.AddQualificationFragment.Companion.Qualification
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
 
-class AddResumeFragment : BaseFragment<FragmentAddResumeBinding>(), DatePickerDialog.OnDateSetListener {
+class AddResumeFragment : BaseFragment<FragmentAddResumeBinding>(),
+    DatePickerDialog.OnDateSetListener {
 
     private var selectedDate: Date? = null
 
-    private var selectedUri : Uri?  =null
+    private var selectedUri: Uri? = null
     private val qualificationsAdapter by lazy {
         QualificationsAdapter()
     }
 
-
     private val experiencesAdapter by lazy {
         ExperiencesAdapter()
     }
+
     override fun initBinding() = FragmentAddResumeBinding.inflate(layoutInflater)
 
     override fun onFragmentCreated() {
@@ -64,9 +60,9 @@ class AddResumeFragment : BaseFragment<FragmentAddResumeBinding>(), DatePickerDi
             }
 
             ivEmployee.setOnClickListener {
-                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU){
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                     chooseUserPhotoFromGallery33()
-                }else{
+                } else {
                     chooseUserPhotoFromGallery()
                 }
             }
@@ -86,12 +82,12 @@ class AddResumeFragment : BaseFragment<FragmentAddResumeBinding>(), DatePickerDi
             }
 
             btnConfirm.setOnClickListener {
-
+                validate()
             }
             rvQualifications.adapter = qualificationsAdapter
             rvExperiences.adapter = experiencesAdapter
             selectedUri?.let {
-                ivEmployee                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           .setImageFromUri(it, requireContext())
+                ivEmployee.setImageFromUri(it, requireContext())
             }
         }
         initSpinners()
@@ -126,7 +122,7 @@ class AddResumeFragment : BaseFragment<FragmentAddResumeBinding>(), DatePickerDi
     }
 
 
-    private fun initSpinners(){
+    private fun initSpinners() {
 
         binding.apply {
             spinnerNationality.adapter = ArrayAdapter(
@@ -144,12 +140,13 @@ class AddResumeFragment : BaseFragment<FragmentAddResumeBinding>(), DatePickerDi
     }
 
 
-    private fun validate(){
+    private fun validate() {
         binding.apply {
-            when{
+            when {
                 selectedUri == null -> {
                     showErrorMsg("select photo")
                 }
+
                 etFirstName.isStringEmpty() -> {
                     showErrorMsg("fill first name")
                 }
@@ -158,30 +155,31 @@ class AddResumeFragment : BaseFragment<FragmentAddResumeBinding>(), DatePickerDi
                     showErrorMsg("fill last name")
                 }
 
-                selectedDate == null ->{
+                selectedDate == null -> {
                     showErrorMsg("fill birth date")
                 }
 
-                etMobileNumber.isStringEmpty() ->{
+                etMobileNumber.isStringEmpty() -> {
                     showErrorMsg("fill mobile number")
                 }
 
-                etAddress.isStringEmpty() ->{
+                etAddress.isStringEmpty() -> {
                     showErrorMsg("fill address")
                 }
-                isValidEmail(etEmail.getString()).not() ->{
+
+                isValidEmail(etEmail.getString()).not() -> {
                     showErrorMsg("invalid email")
                 }
 
-                qualificationsAdapter.list.isEmpty() ->{
+                qualificationsAdapter.list.isEmpty() -> {
                     showErrorMsg("add qualification")
                 }
 
-                experiencesAdapter.list.isEmpty() ->{
+                experiencesAdapter.list.isEmpty() -> {
                     showErrorMsg("add experience")
                 }
 
-                else->{
+                else -> {
                     signWithFirebase()
                 }
 
@@ -191,14 +189,33 @@ class AddResumeFragment : BaseFragment<FragmentAddResumeBinding>(), DatePickerDi
     }
 
 
-    private fun signWithFirebase(){
+    private fun signWithFirebase() {
         binding.apply {
-            val intent = Intent(requireContext(), AddUserService::class.java)
+            val intent = Intent(requireContext(), AddResumeService::class.java)
 
-            val user = ResumeModel(
-
+            val resume = ResumeModel(
+                uri = selectedUri,
+                firstName = etFirstName.getString(),
+                lastName = etLastName.getString(),
+                birthDate = selectedDate?.toString(),
+                mobile = etMobileNumber.getString(),
+                nationality = spinnerNationality.selectedItem.toString(),
+                residenceType = spinnerResidence.selectedItem.toString(),
+                address = etAddress.getString(),
+                hasDriverLicense =
+                when (rgLicense.checkedRadioButtonId) {
+                    rbYes.id -> { true }
+                    else -> { false }
+                },
+                male = when (rgGender.checkedRadioButtonId) {
+                    rbMale.id -> { true }
+                    else -> { false }
+                },
+                email = etEmail.getString(),
+                listOfQualifications = qualificationsAdapter.list.toMutableList(),
+                listOfExperiences = experiencesAdapter.list.toMutableList()
             )
-            intent.putExtra(FirebaseHelp.USERS, user)
+            intent.putExtra(FirebaseHelp.RESUME, resume)
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 requireContext().startForegroundService(intent);
@@ -213,11 +230,14 @@ class AddResumeFragment : BaseFragment<FragmentAddResumeBinding>(), DatePickerDi
     @SuppressLint("InlinedApi")
     private fun chooseUserPhotoFromGallery33() {
         try {
-            if (ContextCompat.checkSelfPermission(requireContext(),
+            if (ContextCompat.checkSelfPermission(
+                    requireContext(),
                     Manifest.permission.READ_MEDIA_IMAGES
-                ) != PackageManager.PERMISSION_GRANTED || ContextCompat.checkSelfPermission(requireContext(),
+                ) != PackageManager.PERMISSION_GRANTED || ContextCompat.checkSelfPermission(
+                    requireContext(),
                     Manifest.permission.WRITE_EXTERNAL_STORAGE
-                ) != PackageManager.PERMISSION_GRANTED) {
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
 
                 requestMultiplePermissions.launch(
                     arrayOf(
@@ -225,7 +245,8 @@ class AddResumeFragment : BaseFragment<FragmentAddResumeBinding>(), DatePickerDi
                     )
                 )
             } else {
-                val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+                val intent =
+                    Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
 
                 startForGallery.launch(intent)
             }
@@ -266,11 +287,14 @@ class AddResumeFragment : BaseFragment<FragmentAddResumeBinding>(), DatePickerDi
 
     private fun chooseUserPhotoFromGallery() {
         try {
-            if (ContextCompat.checkSelfPermission(requireContext(),
+            if (ContextCompat.checkSelfPermission(
+                    requireContext(),
                     Manifest.permission.READ_EXTERNAL_STORAGE
-                ) != PackageManager.PERMISSION_GRANTED || ContextCompat.checkSelfPermission(requireContext(),
+                ) != PackageManager.PERMISSION_GRANTED || ContextCompat.checkSelfPermission(
+                    requireContext(),
                     Manifest.permission.WRITE_EXTERNAL_STORAGE
-                ) != PackageManager.PERMISSION_GRANTED) {
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
 
                 requestMultiplePermissions.launch(
                     arrayOf(
@@ -279,7 +303,8 @@ class AddResumeFragment : BaseFragment<FragmentAddResumeBinding>(), DatePickerDi
                     )
                 )
             } else {
-                val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+                val intent =
+                    Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
 
                 startForGallery.launch(intent)
             }
@@ -290,7 +315,7 @@ class AddResumeFragment : BaseFragment<FragmentAddResumeBinding>(), DatePickerDi
 
 
     override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
-        val calendar  = Calendar.getInstance()
+        val calendar = Calendar.getInstance()
         calendar[year, month] = dayOfMonth
         selectedDate = Date(calendar.timeInMillis)
         val date = SimpleDateFormat("dd/MM/yyyy").format(selectedDate)

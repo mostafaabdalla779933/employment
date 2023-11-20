@@ -1,4 +1,4 @@
-package com.employment.employment.feature.auth
+package com.employment.employment.feature.resume
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -19,7 +19,7 @@ import com.employment.employment.common.firebase.data.UserModel
 import com.employment.employment.common.showMessage
 import com.google.firebase.firestore.SetOptions
 
-class AddUserService : JobIntentService() {
+class AddResumeService : JobIntentService() {
 
     var isFinished = false
     var isFailed = false
@@ -37,57 +37,41 @@ class AddUserService : JobIntentService() {
 
 
     private fun signUp(intent: Intent?){
-
-        intent?.extras?.getParcelable<UserModel>(FirebaseHelp.USERS)?.let { user->
-            FirebaseHelp.auth.createUserWithEmailAndPassword(
-                user.email ?: "",
-                user.password ?: ""
-            )
-                .addOnCompleteListener{ task ->
-                    if (task.isSuccessful) {
-                        user.uri?.let{
-                            uploadImage(it, task.result.user?.uid ?: "",user)
-                        }?: kotlin.run {
-                            addUser(id =task.result.user?.uid ?: "", profileUrl = "", userModel = user)
-                        }
-                    } else {
-                        isFailed = true
-                        showMessage(task.exception?.localizedMessage ?: "something wrong")
-                    }
-                }
+        intent?.extras?.getParcelable<ResumeModel>(FirebaseHelp.RESUME)?.let { resume ->
+            uploadImage(resume)
         }
     }
 
-    private fun uploadImage(uri: Uri, id:String, userModel: UserModel){
-        FirebaseHelp.uploadImageToCloudStorage(this,uri,"user",{ url->
-            addUser(id =id, profileUrl = url, userModel = userModel)
-        },{
-            isFailed = true
-            showMessage(it.localizedMessage ?: "something wrong")
-        })
-    }
-
-
-
-    private fun addUser(id:String,profileUrl:String,userModel: UserModel) {
-        userModel.userId = id
-        userModel.uri = null
-        userModel.profileUrl = profileUrl
-
-        FirebaseHelp
-            .fireStore.collection(FirebaseHelp.USERS)
-            .document(id).set(userModel, SetOptions.merge())
-            .addOnSuccessListener {
-                isFinished = true
-                FirebaseHelp.logout()
-                showMessage("data sent")
-            }.addOnFailureListener { e ->
+    private fun uploadImage(model: ResumeModel){
+        model.uri?.let {
+            FirebaseHelp.uploadImageToCloudStorage(this, it,"resume",{ url ->
+                addResume(url, model)
+            },{
                 isFailed = true
-                showMessage("failed  ${e.localizedMessage}")
-            }
-
+                showMessage(it.localizedMessage ?: "something wrong")
+            })
+        }
     }
 
+
+    private fun addResume(url:String, model: ResumeModel) {
+        model.profileUrl = url
+        model.uri = null
+        FirebaseHelp.user?.resume = model
+
+        FirebaseHelp.user?.let {
+            FirebaseHelp
+                .fireStore.collection(FirebaseHelp.USERS)
+                .document(FirebaseHelp.getUserID()).set(it, SetOptions.merge())
+                .addOnSuccessListener {
+                    isFinished = true
+                    showMessage("data sent")
+                }.addOnFailureListener { e ->
+                    isFailed = true
+                    showMessage("failed  ${e.localizedMessage}")
+                }
+        }
+    }
 
     private fun progress() {
         val  progressMax = 100

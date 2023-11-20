@@ -232,7 +232,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="14dp"
-            android:text="Nationality"
+            android:text="Gender"
             android:textColor="#A5A5A5"
             android:textSize="13sp"
             app:layout_constraintStart_toStartOf="@id/tv_employee_address"

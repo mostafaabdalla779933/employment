@@ -67,6 +67,11 @@
             android:name=".feature.auth.AddUserService"
             android:enabled="true"
             android:exported="true" />
+
+        <service
+            android:name=".feature.resume.AddResumeService"
+            android:enabled="true"
+            android:exported="true" />
     </application>
 
 </manifest>
