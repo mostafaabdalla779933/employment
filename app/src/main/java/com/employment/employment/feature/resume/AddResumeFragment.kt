@@ -19,14 +19,23 @@ import androidx.navigation.fragment.findNavController
 import com.employment.employment.R
 import com.employment.employment.common.base.BaseFragment
 import com.employment.employment.common.base.DateFragment
+import com.employment.employment.common.firebase.FirebaseHelp
 import com.employment.employment.common.firebase.data.ExperienceModel
 import com.employment.employment.common.firebase.data.QualificationModel
+import com.employment.employment.common.firebase.data.ResumeModel
+import com.employment.employment.common.firebase.data.UserModel
+import com.employment.employment.common.firebase.data.UserType
 import com.employment.employment.common.firebase.data.generateYearsList
 import com.employment.employment.common.firebase.data.listOfNationality
 import com.employment.employment.common.firebase.data.listOfQualifications
 import com.employment.employment.common.firebase.data.listOfResidencyTypes
+import com.employment.employment.common.getString
+import com.employment.employment.common.isStringEmpty
+import com.employment.employment.common.isValidEmail
 import com.employment.employment.common.setImageFromUri
+import com.employment.employment.common.showMessage
 import com.employment.employment.databinding.FragmentAddResumeBinding
+import com.employment.employment.feature.auth.AddUserService
 import com.employment.employment.feature.resume.AddExperienceFragment.Companion.Experience
 import com.employment.employment.feature.resume.AddQualificationFragment.Companion.Qualification
 import java.text.SimpleDateFormat
@@ -74,6 +83,10 @@ class AddResumeFragment : BaseFragment<FragmentAddResumeBinding>(), DatePickerDi
 
             tvAddExperience.setOnClickListener {
                 findNavController().navigate(AddResumeFragmentDirections.actionAddResumeFragmentToAddExperienceFragment())
+            }
+
+            btnConfirm.setOnClickListener {
+
             }
             rvQualifications.adapter = qualificationsAdapter
             rvExperiences.adapter = experiencesAdapter
@@ -131,6 +144,71 @@ class AddResumeFragment : BaseFragment<FragmentAddResumeBinding>(), DatePickerDi
     }
 
 
+    private fun validate(){
+        binding.apply {
+            when{
+                selectedUri == null -> {
+                    showErrorMsg("select photo")
+                }
+                etFirstName.isStringEmpty() -> {
+                    showErrorMsg("fill first name")
+                }
+
+                etLastName.isStringEmpty() -> {
+                    showErrorMsg("fill last name")
+                }
+
+                selectedDate == null ->{
+                    showErrorMsg("fill birth date")
+                }
+
+                etMobileNumber.isStringEmpty() ->{
+                    showErrorMsg("fill mobile number")
+                }
+
+                etAddress.isStringEmpty() ->{
+                    showErrorMsg("fill address")
+                }
+                isValidEmail(etEmail.getString()).not() ->{
+                    showErrorMsg("invalid email")
+                }
+
+                qualificationsAdapter.list.isEmpty() ->{
+                    showErrorMsg("add qualification")
+                }
+
+                experiencesAdapter.list.isEmpty() ->{
+                    showErrorMsg("add experience")
+                }
+
+                else->{
+                    signWithFirebase()
+                }
+
+            }
+        }
+
+    }
+
+
+    private fun signWithFirebase(){
+        binding.apply {
+            val intent = Intent(requireContext(), AddUserService::class.java)
+
+            val user = ResumeModel(
+
+            )
+            intent.putExtra(FirebaseHelp.USERS, user)
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                requireContext().startForegroundService(intent);
+            } else {
+                requireContext().startService(intent);
+            }
+            requireContext().showMessage("uploading your data")
+            findNavController().popBackStack()
+        }
+    }
 
     @SuppressLint("InlinedApi")
     private fun chooseUserPhotoFromGallery33() {

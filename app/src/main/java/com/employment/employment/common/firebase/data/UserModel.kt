@@ -22,37 +22,58 @@ data class UserModel(
     var address: String? = "",
     var about: String? = "",
     var location: SelectedLocation? = null,
-    var companyWebsite: String? = ""
+    var companyWebsite: String? = "",
+    var resume: ResumeModel? = null
 ) : Parcelable {
 
     fun getFullName() = "$firstName $lastName"
 }
 
 @Parcelize
+data class ResumeModel(
+    var uri: Uri? = null,
+    var profileUrl: String? = "",
+    var firstName: String? = "",
+    var lastName: String? = "",
+    var birthDate : String? = "",
+    var mobile: String? = "",
+    var nationality: String? = "",
+    var residenceType: String? = "",
+    var address: String? = "",
+    var hasDriverLicense: Boolean? = false,
+    var male: Boolean? = true,
+    var email: String? = "",
+    var listOfQualifications : MutableList<QualificationModel?>? = mutableListOf(),
+    var listOfExperiences :  MutableList<ExperienceModel?>? = mutableListOf()
+) : Parcelable {
+    fun getFullName() = "$firstName $lastName"
+}
+
+@Parcelize
 data class QualificationModel(
-    var qualification:String? = "",
-    var graduationCountry:String? = "",
-    var graduationUniversity:String? = "",
-    var graduationGrade:String? = "",
-    var collegeName:String? = "",
-    var graduationYear:String? = "",
-): Parcelable
+    var qualification: String? = "",
+    var graduationCountry: String? = "",
+    var graduationUniversity: String? = "",
+    var graduationGrade: String? = "",
+    var collegeName: String? = "",
+    var graduationYear: String? = "",
+) : Parcelable
 
 
 @Parcelize
 data class ExperienceModel(
-    var jobTitle:String? = "",
-    var companyName:String? = "",
-    var companyWebsite:String? = "",
-    var companyNumber:String? = "",
-    var companyAbout:String? = "",
-    var companyEmail:String? = "",
-    var startDate:String? = "",
-    var endDate:String? = "",
-    var present:Boolean? = false,
+    var jobTitle: String? = "",
+    var companyName: String? = "",
+    var companyWebsite: String? = "",
+    var companyNumber: String? = "",
+    var companyAbout: String? = "",
+    var companyEmail: String? = "",
+    var startDate: String? = "",
+    var endDate: String? = "",
+    var present: Boolean? = false,
     var experience: Long? = 0L,
-    var mobile:String?=""
-): Parcelable
+    var mobile: String? = ""
+) : Parcelable
 
 
 enum class UserType(val value: String) {
@@ -128,7 +149,7 @@ enum class UserState(val value: String) {
 
 @Parcelize
 data class JobModel(
-    val hashed:String?="",
+    val hashed: String? = "",
     var name: String? = "",
     var location: String? = "",
     var desc: String? = "",
