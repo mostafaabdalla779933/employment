@@ -26,6 +26,14 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_userHomeFragment_to_notificationFragment2"
+            app:destination="@id/notificationFragment2"
+            app:popUpTo="@id/userHomeFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/userMenuFragment"
@@ -99,4 +107,27 @@
         android:name="com.employment.employment.feature.resume.AddExperienceFragment"
         android:label="fragment_add_experience"
         tools:layout="@layout/fragment_add_experience" />
+    <fragment
+        android:id="@+id/notificationFragment2"
+        android:name="com.employment.employment.feature.NotificationFragment"
+        android:label="fragment_notification"
+        tools:layout="@layout/fragment_notification" >
+        <action
+            android:id="@+id/action_notificationFragment2_to_jobRequestFragment"
+            app:destination="@id/jobRequestFragment"
+            app:popUpTo="@id/notificationFragment2"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/jobRequestFragment"
+        android:name="com.employment.employment.feature.JobRequestFragment"
+        android:label="fragment_job_request"
+        tools:layout="@layout/fragment_job_request" >
+        <argument
+            android:name="notification"
+            app:argType="com.employment.employment.common.firebase.data.NotificationModel" />
+    </fragment>
 </navigation>
