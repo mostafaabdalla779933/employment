@@ -4,6 +4,7 @@ package com.employment.employment.feature.companyDashboard
 import androidx.navigation.fragment.findNavController
 import com.employment.employment.common.base.BaseFragment
 import com.employment.employment.common.firebase.FirebaseHelp
+import com.employment.employment.common.firebase.data.JobModel
 import com.employment.employment.common.firebase.data.UserModel
 import com.employment.employment.common.firebase.data.UserType
 import com.employment.employment.databinding.FragmentCompanyHomeBinding
@@ -13,6 +14,8 @@ import com.google.android.material.tabs.TabLayout
 class CompanyHomeFragment : BaseFragment<FragmentCompanyHomeBinding>() {
 
     private var users : MutableList<UserModel>? = null
+    private var recommended = mutableListOf<UserModel>()
+
     private val adapter : EmployeesAdapter by lazy {
         EmployeesAdapter{
             findNavController().navigate(
@@ -31,20 +34,35 @@ class CompanyHomeFragment : BaseFragment<FragmentCompanyHomeBinding>() {
         }
         addTabListener()
         getAllEmployees()
+        getJobs()
     }
 
 
     private fun getAllEmployees() {
         showLoading()
         FirebaseHelp.getAllObjects<UserModel>(FirebaseHelp.USERS, { allUsers ->
-            users = allUsers
             hideLoading()
-            users?.let {
-                adapter.submitList(users?.filter { e -> e.userType == UserType.User.value })
-            }
+            users = allUsers.filter { e -> e.userType == UserType.User.value && e.resume != null}.toMutableList()
+            adapter.submitList(users)
         }, {
             hideLoading()
             showErrorMsg(it)
+        })
+    }
+
+    private fun getJobs() {
+        FirebaseHelp.getAllObjects<JobModel>(FirebaseHelp.JOBS, { allJos ->
+            users?.let {
+                for (job in allJos) {
+                    for (user in it) {
+                        if (job.name == user.resume?.listOfExperiences?.get(0)?.jobTitle) {
+                            recommended.add(user)
+                        }
+                    }
+                }
+            }
+
+        }, {
         })
     }
 
@@ -54,10 +72,10 @@ class CompanyHomeFragment : BaseFragment<FragmentCompanyHomeBinding>() {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 when(tab?.position){
                     0 ->{
-                        showErrorMsg("0")
+                        adapter.submitList(users)
                     }
                     1 ->{
-                        showErrorMsg("1")
+                        adapter.submitList(recommended)
                     }
                 }
             }
