@@ -180,11 +180,10 @@ data class NotificationModel(
     val date: String? = null,
     val fromId: String? = null,
     var from: UserModel? = null,
-    var store: UserModel? = null,
     val toUserId: String? = null,
     val type: String? = null,
+    val interviewTime: String? = null
 ) : Parcelable
-
 
 @Parcelize
 data class SelectedLocation(

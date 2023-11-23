@@ -18,6 +18,14 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_companyHomeFragment_to_notificationFragment2"
+            app:destination="@id/notificationFragment2"
+            app:popUpTo="@id/companyHomeFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
 
     <fragment
@@ -89,6 +97,25 @@
         android:id="@+id/sendInterviewDetailsFragment"
         android:name="com.employment.employment.feature.SendInterviewDetailsFragment"
         android:label="fragment_send_interview_details"
-        tools:layout="@layout/fragment_send_interview_details" />
+        tools:layout="@layout/fragment_send_interview_details" >
+        <argument
+            android:name="employe"
+            app:argType="com.employment.employment.common.firebase.data.UserModel" />
+    </dialog>
+
+    <fragment
+        android:id="@+id/notificationFragment2"
+        android:name="com.employment.employment.feature.NotificationFragment"
+        android:label="fragment_notification"
+        tools:layout="@layout/fragment_notification" >
+        <action
+            android:id="@+id/action_notificationFragment2_to_employeeDetailsFragment"
+            app:destination="@id/employeeDetailsFragment"
+            app:popUpTo="@id/notificationFragment2"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
     <include app:graph="@navigation/user_graph" />
 </navigation>

@@ -3,7 +3,12 @@ package com.employment.employment.feature
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.employment.employment.common.base.BaseFragment
+import com.employment.employment.common.firebase.FirebaseHelp
+import com.employment.employment.common.firebase.data.NotificationModel
+import com.employment.employment.common.firebase.data.UserType
 import com.employment.employment.databinding.FragmentJobDetailsBinding
+import java.text.SimpleDateFormat
+import java.util.Date
 
 class JobDetailsFragment : BaseFragment<FragmentJobDetailsBinding>() {
 
@@ -16,6 +21,10 @@ class JobDetailsFragment : BaseFragment<FragmentJobDetailsBinding>() {
         binding.apply {
             ivBack.setOnClickListener {
                 findNavController().popBackStack()
+            }
+
+            btnRequest.setOnClickListener {
+                userSendNotificationRequestToCompany()
             }
         }
     }
@@ -36,6 +45,35 @@ class JobDetailsFragment : BaseFragment<FragmentJobDetailsBinding>() {
             tvJobExperience.text = args.job.experience
             tvJobWorkTime.text = args.job.jobType
         }
+    }
+
+    private fun userSendNotificationRequestToCompany() {
+        showLoading()
+        val sdf = SimpleDateFormat("hh:mm a dd/MM/yyyy ")
+        val currentDate = sdf.format(Date())
+
+        val notificationModel = NotificationModel(
+            message = "${FirebaseHelp.user?.name} send you request to work.",
+            hash = System.currentTimeMillis().toString(),
+            date = currentDate,
+            fromId = FirebaseHelp.getUserID(),
+            from= FirebaseHelp.user,
+            type = UserType.User.value,
+            toUserId = args.job.company?.userId
+        )
+
+        FirebaseHelp.addObject<NotificationModel>(
+            notificationModel,
+            FirebaseHelp.NOTIFICATION,
+            notificationModel.hash ?: "",
+            {
+                hideLoading()
+                showMessage("success")
+                findNavController().popBackStack()
+            },
+            {
+                hideLoading()
+            })
     }
 
 }
