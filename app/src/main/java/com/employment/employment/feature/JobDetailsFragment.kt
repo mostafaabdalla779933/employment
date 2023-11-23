@@ -53,7 +53,7 @@ class JobDetailsFragment : BaseFragment<FragmentJobDetailsBinding>() {
         val currentDate = sdf.format(Date())
 
         val notificationModel = NotificationModel(
-            message = "${FirebaseHelp.user?.name} send you request to work.",
+            message = "${FirebaseHelp.user?.getFullName()} send you request to work.",
             hash = System.currentTimeMillis().toString(),
             date = currentDate,
             fromId = FirebaseHelp.getUserID(),

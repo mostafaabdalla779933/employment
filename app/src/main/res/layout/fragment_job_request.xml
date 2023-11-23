@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -159,14 +160,15 @@
 
                 <TextView
                     android:id="@+id/tv_interview_address"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
                     android:textSize="12sp"
                     tools:text="combany address"
+                    android:layout_marginEnd="16dp"
                     app:layout_constraintStart_toEndOf="@id/tv_address"
-                    app:layout_constraintTop_toTopOf="@id/tv_address"
-                    app:layout_constraintBottom_toBottomOf="@id/tv_address"/>
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tv_address" />
 
                 <TextView
                     android:id="@+id/tv_time"
@@ -179,7 +181,7 @@
                     android:textSize="12sp"
                     android:text="Interview time: "
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_address"
+                    app:layout_constraintTop_toBottomOf="@id/tv_interview_address"
                     app:layout_constraintStart_toStartOf="parent" />
 
                 <TextView
@@ -195,7 +197,5 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.core.widget.NestedScrollView >

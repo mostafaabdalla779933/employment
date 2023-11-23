@@ -1,5 +1,6 @@
 package com.employment.employment.feature
 
+import android.util.Log
 import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import com.employment.employment.R
@@ -11,6 +12,7 @@ import com.employment.employment.common.firebase.data.UserType
 import com.employment.employment.common.showMessage
 import com.employment.employment.databinding.FragmentNotificationBinding
 import com.employment.employment.feature.notification.NotificationAdapter
+import kotlin.math.log
 
 class NotificationFragment : BaseFragment<FragmentNotificationBinding>() {
 
@@ -27,9 +29,7 @@ class NotificationFragment : BaseFragment<FragmentNotificationBinding>() {
                     findNavController()
                         .navigate(
                             NotificationFragmentDirections
-                                .actionNotificationFragmentToJobRequestFragment(
-                                    it ?: NotificationModel()
-                                )
+                                .actionNotificationFragmentToJobRequestFragment(it)
                         )
                 }
             }
