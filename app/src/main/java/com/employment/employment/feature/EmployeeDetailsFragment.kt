@@ -1,6 +1,7 @@
 package com.employment.employment.feature
 
-import androidx.core.net.toUri
+
+import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
@@ -52,7 +53,7 @@ class EmployeeDetailsFragment : BaseFragment<FragmentEmployeeDetailsBinding>() {
             }
 
             tvEmployeeResume.setOnClickListener {
-                findNavController().navigate("employment://employment/resume".toUri())
+                findNavController().navigate(R.id.myResumeFragment, bundleOf("user" to args.employee))
             }
 
 

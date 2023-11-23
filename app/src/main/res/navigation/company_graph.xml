@@ -116,5 +116,19 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
+
+    <fragment
+        android:id="@+id/myResumeFragment"
+        android:name="com.employment.employment.feature.resume.MyResumeFragment"
+        android:label="fragment_my_resume"
+        tools:layout="@layout/fragment_my_resume" >
+
+        <argument
+            android:name="user"
+            app:nullable="true"
+            android:defaultValue="@null"
+            app:argType="com.employment.employment.common.firebase.data.UserModel" />
+
+    </fragment>
     <include app:graph="@navigation/user_graph" />
 </navigation>
