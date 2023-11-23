@@ -9,8 +9,8 @@ import com.employment.employment.feature.MainActivity
 import com.employment.employment.feature.companyDashboard.CompanyMenuFragmentDirections
 
 
-class UserMenuFragment : BaseFragment<FragmentUserMenuBinding>(){
-    override fun initBinding()=FragmentUserMenuBinding.inflate(layoutInflater)
+class UserMenuFragment : BaseFragment<FragmentUserMenuBinding>() {
+    override fun initBinding() = FragmentUserMenuBinding.inflate(layoutInflater)
 
     override fun onFragmentCreated() {
         setActions()
@@ -28,6 +28,9 @@ class UserMenuFragment : BaseFragment<FragmentUserMenuBinding>(){
             tvFullName.text = FirebaseHelp.user?.getFullName() ?: ""
             tvEmail.text = FirebaseHelp.user?.email ?: ""
 
+            ivNotification.setOnClickListener {
+                findNavController().navigate(UserHomeFragmentDirections.actionUserHomeFragmentToNotificationFragment())
+            }
         }
     }
 

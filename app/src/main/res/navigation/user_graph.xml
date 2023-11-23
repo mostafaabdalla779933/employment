@@ -39,7 +39,16 @@
         android:id="@+id/userMenuFragment"
         android:name="com.employment.employment.feature.userDashboard.UserMenuFragment"
         android:label="fragment_user_menu"
-        tools:layout="@layout/fragment_user_menu" />
+        tools:layout="@layout/fragment_user_menu" >
+        <action
+            android:id="@+id/action_userMenuFragment_to_notificationFragment"
+            app:destination="@id/notificationFragment"
+            app:popUpTo="@id/userMenuFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
     <fragment
         android:id="@+id/userResumeFragment"
         android:name="com.employment.employment.feature.userDashboard.UserResumeFragment"
@@ -55,6 +64,14 @@
         <action
             android:id="@+id/action_userResumeFragment_to_addResumeFragment"
             app:destination="@id/addResumeFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_userResumeFragment_to_notificationFragment"
+            app:destination="@id/notificationFragment"
+            app:popUpTo="@id/userResumeFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"

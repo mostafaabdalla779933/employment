@@ -1,6 +1,7 @@
 package com.employment.employment.feature.companyDashboard
 
 import android.widget.ArrayAdapter
+import androidx.navigation.fragment.findNavController
 import com.employment.employment.R
 import com.employment.employment.common.base.BaseFragment
 import com.employment.employment.common.firebase.FirebaseHelp
@@ -23,6 +24,13 @@ class CompanySearchFragment : BaseFragment<FragmentCompanySearchBinding>() {
     override fun onFragmentCreated() {
         getAllEmployees()
         initSpinners()
+
+        binding.ivNotification.setOnClickListener {
+            findNavController().navigate(
+                CompanySearchFragmentDirections
+                    .actionCompanySearchFragmentToNotificationFragment()
+            )
+        }
     }
 
     private fun initSpinners() {

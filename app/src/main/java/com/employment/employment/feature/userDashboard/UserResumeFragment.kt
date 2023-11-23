@@ -19,6 +19,10 @@ class UserResumeFragment : BaseFragment<FragmentUserResumeBinding>() {
             tvAddResume.setOnClickListener {
                 findNavController().navigate(UserResumeFragmentDirections.actionUserResumeFragmentToAddResumeFragment())
             }
+
+            ivNotification.setOnClickListener {
+                findNavController().navigate(UserResumeFragmentDirections.actionUserResumeFragmentToNotificationFragment())
+            }
         }
     }
 }

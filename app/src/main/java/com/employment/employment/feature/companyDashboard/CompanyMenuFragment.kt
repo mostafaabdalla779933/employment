@@ -37,6 +37,13 @@ class CompanyMenuFragment : BaseFragment<FragmentCompanyMenuBinding>() {
                         .actionCompanyMenuFragmentToCompanyJobApplicationsFragment()
                 )
             }
+
+            ivNotification.setOnClickListener {
+                findNavController().navigate(
+                    CompanyMenuFragmentDirections
+                        .actionCompanyMenuFragmentToNotificationFragment()
+                )
+            }
         }
     }
 

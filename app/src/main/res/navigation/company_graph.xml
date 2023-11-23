@@ -49,12 +49,29 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"
             app:popUpTo="@layout/fragment_company_menu" />
+        <action
+            android:id="@+id/action_companyMenuFragment_to_notificationFragment"
+            app:destination="@id/notificationFragment"
+            app:popUpTo="@id/companyMenuFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/companySearchFragment"
         android:name="com.employment.employment.feature.companyDashboard.CompanySearchFragment"
         android:label="fragment_company_search"
-        tools:layout="@layout/fragment_company_search" />
+        tools:layout="@layout/fragment_company_search" >
+        <action
+            android:id="@+id/action_companySearchFragment_to_notificationFragment"
+            app:destination="@id/notificationFragment"
+            app:popUpTo="@id/companySearchFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
     <fragment
         android:id="@+id/createJobApplicationFragment"
         android:name="com.employment.employment.feature.createJobApp.CreateJobApplicationFragment"
@@ -67,7 +84,12 @@
         tools:layout="@layout/fragment_company_job_applications">
         <action
             android:id="@+id/action_companyJobApplicationsFragment_to_jobDetailsFragment2"
-            app:destination="@id/jobDetailsFragment2" />
+            app:destination="@id/jobDetailsFragment2"
+            app:popUpTo="@id/companyJobApplicationsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/jobDetailsFragment2"
@@ -88,7 +110,12 @@
             app:destination="@id/sendInterviewDetailsFragment" />
         <action
             android:id="@+id/action_employeeDetailsFragment_to_addResumeFragment"
-            app:destination="@id/addResumeFragment" />
+            app:destination="@id/addResumeFragment"
+            app:popUpTo="@id/employeeDetailsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
         <argument
             android:name="employee"
             app:argType="com.employment.employment.common.firebase.data.UserModel" />
