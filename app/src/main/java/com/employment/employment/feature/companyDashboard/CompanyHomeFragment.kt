@@ -24,6 +24,11 @@ class CompanyHomeFragment : BaseFragment<FragmentCompanyHomeBinding>() {
     override fun initBinding() = FragmentCompanyHomeBinding.inflate(layoutInflater)
 
     override fun onFragmentCreated() {
+        binding.apply {
+            ivNotification.setOnClickListener {
+                findNavController().navigate(CompanyHomeFragmentDirections.actionCompanyHomeFragmentToNotificationFragment())
+            }
+        }
         addTabListener()
         getAllEmployees()
     }

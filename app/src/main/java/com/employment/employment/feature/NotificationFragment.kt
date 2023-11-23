@@ -1,6 +1,8 @@
 package com.employment.employment.feature
 
+import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
+import com.employment.employment.R
 import com.employment.employment.common.base.BaseFragment
 import com.employment.employment.common.firebase.FirebaseHelp
 import com.employment.employment.common.firebase.data.NotificationModel
@@ -18,16 +20,14 @@ class NotificationFragment : BaseFragment<FragmentNotificationBinding>() {
                 if (type == UserType.User.value) {
                     findNavController()
                         .navigate(
-                            NotificationFragmentDirections
-                                .actionNotificationFragment2ToEmployeeDetailsFragment(
-                                    it.from ?: UserModel()
-                                )
+                            R.id.employeeDetailsFragment,
+                            bundleOf("employee" to (it.from ?: UserModel()))
                         )
                 } else {
                     findNavController()
                         .navigate(
                             NotificationFragmentDirections
-                                .actionNotificationFragment2ToJobRequestFragment(
+                                .actionNotificationFragmentToJobRequestFragment(
                                     it ?: NotificationModel()
                                 )
                         )

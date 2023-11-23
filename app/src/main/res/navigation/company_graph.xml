@@ -19,8 +19,8 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"/>
         <action
-            android:id="@+id/action_companyHomeFragment_to_notificationFragment2"
-            app:destination="@id/notificationFragment2"
+            android:id="@+id/action_companyHomeFragment_to_notificationFragment"
+            app:destination="@id/notificationFragment"
             app:popUpTo="@id/companyHomeFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
@@ -104,14 +104,13 @@
     </dialog>
 
     <fragment
-        android:id="@+id/notificationFragment2"
+        android:id="@+id/notificationFragment"
         android:name="com.employment.employment.feature.NotificationFragment"
         android:label="fragment_notification"
         tools:layout="@layout/fragment_notification" >
         <action
-            android:id="@+id/action_notificationFragment2_to_employeeDetailsFragment"
+            android:id="@+id/action_notificationFragment_to_employeeDetailsFragment"
             app:destination="@id/employeeDetailsFragment"
-            app:popUpTo="@id/notificationFragment2"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"

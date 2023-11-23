@@ -27,8 +27,8 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"/>
         <action
-            android:id="@+id/action_userHomeFragment_to_notificationFragment2"
-            app:destination="@id/notificationFragment2"
+            android:id="@+id/action_userHomeFragment_to_notificationFragment"
+            app:destination="@id/notificationFragment"
             app:popUpTo="@id/userHomeFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
@@ -113,14 +113,17 @@
         android:label="fragment_add_experience"
         tools:layout="@layout/fragment_add_experience" />
     <fragment
-        android:id="@+id/notificationFragment2"
+        android:id="@+id/notificationFragment"
         android:name="com.employment.employment.feature.NotificationFragment"
         android:label="fragment_notification"
         tools:layout="@layout/fragment_notification" >
+        <deepLink
+            android:id="@+id/deepLink2"
+            app:uri="employment://employment/notification" />
         <action
-            android:id="@+id/action_notificationFragment2_to_jobRequestFragment"
+            android:id="@+id/action_notificationFragment_to_jobRequestFragment"
             app:destination="@id/jobRequestFragment"
-            app:popUpTo="@id/notificationFragment2"
+            app:popUpTo="@id/notificationFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
