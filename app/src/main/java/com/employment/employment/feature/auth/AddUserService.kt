@@ -7,14 +7,11 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.os.SystemClock
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.JobIntentService
 import androidx.core.app.NotificationCompat
-import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.employment.employment.R
 import com.employment.employment.common.firebase.FirebaseHelp
-import com.employment.employment.common.firebase.data.ResumeModel
 import com.employment.employment.common.firebase.data.UserModel
 import com.employment.employment.common.showMessage
 import com.google.firebase.firestore.SetOptions

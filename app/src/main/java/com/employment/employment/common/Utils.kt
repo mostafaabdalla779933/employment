@@ -294,11 +294,16 @@ fun calculateDateDifferenceToLong(date1: Date?, date2: Date?): Long {
 
 fun Long.toYearsAndMonths():String{
     val calendar = Calendar.getInstance()
-    calendar.setTimeInMillis(this)
+    calendar.timeInMillis = this
     val mYear: Int = calendar.get(Calendar.YEAR) - 1970
     val mMonth: Int = calendar.get(Calendar.MONTH)
 
-    return if(mYear == 0 && mMonth == 0) "" else "$mYear Years $mMonth Month"
+    return when{
+        mYear == 0 && mMonth == 0 -> ""
+        mYear == 0 -> "$mMonth Month"
+        mMonth == 0 -> "$mYear Years"
+        else -> "$mYear Years $mMonth Month"
+    }
 }
 
 fun calculateDateDifference(date1: Date?, date2: Date?): String {
@@ -315,6 +320,36 @@ fun calculateDateDifference(date1: Date?, date2: Date?): String {
     val mYear: Int = calendar3.get(Calendar.YEAR) - 1970
     val mMonth: Int = calendar3.get(Calendar.MONTH)
 
-    return if(mYear == 0 && mMonth == 0) "" else "$mYear Years $mMonth Month"
+    return when{
+        mYear == 0 && mMonth == 0 -> ""
+        mYear == 0 -> "$mMonth Month"
+        mMonth == 0 -> "$mYear Years"
+        else -> "$mYear Years $mMonth Month"
+    }
+}
+
+
+fun String.getMonth(): String {
+    val inputFormat = SimpleDateFormat("EEE MMM d HH:mm:ss z yyyy", Locale.US)
+    val outputFormat = SimpleDateFormat("MMM", Locale.US)
+    return outputFormat.format(inputFormat.parse(this))
+}
+
+
+fun String.getMonthAndYear(): String {
+    val inputFormat = SimpleDateFormat("EEE MMM d HH:mm:ss z yyyy", Locale.US)
+    val outputFormat = SimpleDateFormat("MMM yyyy", Locale.US)
+    return outputFormat.format(inputFormat.parse(this))
+}
+
+fun String.getDayMonthAndYear(): String {
+    return try {
+        val inputFormat = SimpleDateFormat("EEE MMM d HH:mm:ss z yyyy", Locale.US)
+        val outputFormat = SimpleDateFormat("d MMM yyyy", Locale.US)
+        outputFormat.format(inputFormat.parse(this))
+    }catch (e:Exception){
+        ""
+    }
+
 }
 

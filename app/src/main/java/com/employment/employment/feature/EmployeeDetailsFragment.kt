@@ -1,5 +1,6 @@
 package com.employment.employment.feature
 
+import androidx.core.net.toUri
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
@@ -31,7 +32,18 @@ class EmployeeDetailsFragment : BaseFragment<FragmentEmployeeDetailsBinding>() {
                 .into(ivEmployee)
             tvEmployeeName.text = "${args.employee.firstName} ${args.employee.lastName}"
             tvEmployeeNumber.text = args.employee.mobile
-            tvEmployeeJob.text = args.employee.resume?.listOfQualifications?.get(0)?.qualification ?: "IT"
+            tvEmployeeJob.text =
+                args.employee.resume?.listOfQualifications?.get(0)?.qualification ?: "IT"
+
+            btnInterview.setOnClickListener {
+                findNavController().navigate(EmployeeDetailsFragmentDirections.actionEmployeeDetailsFragmentToSendInterviewDetailsFragment())
+            }
+
+            tvEmployeeResume.setOnClickListener {
+                findNavController().navigate("employment://employment/resume".toUri())
+            }
+
+
         }
     }
 

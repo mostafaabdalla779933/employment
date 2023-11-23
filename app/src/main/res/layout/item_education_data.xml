@@ -10,15 +10,16 @@
 
     <TextView
         android:id="@+id/tv_college_name"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        tools:text="Bachelor's, college name"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="12dp"
         android:textColor="#2363F5"
         android:textSize="16sp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toStartOf="@+id/tv_year"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        tools:text="Bachelor's, college name" />
 
     <TextView
         android:id="@+id/tv_university_name"

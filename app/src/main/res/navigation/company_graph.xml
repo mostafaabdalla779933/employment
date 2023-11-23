@@ -78,6 +78,9 @@
         <action
             android:id="@+id/action_employeeDetailsFragment_to_sendInterviewDetailsFragment"
             app:destination="@id/sendInterviewDetailsFragment" />
+        <action
+            android:id="@+id/action_employeeDetailsFragment_to_addResumeFragment"
+            app:destination="@id/addResumeFragment" />
         <argument
             android:name="employee"
             app:argType="com.employment.employment.common.firebase.data.UserModel" />
@@ -87,4 +90,5 @@
         android:name="com.employment.employment.feature.SendInterviewDetailsFragment"
         android:label="fragment_send_interview_details"
         tools:layout="@layout/fragment_send_interview_details" />
+    <include app:graph="@navigation/user_graph" />
 </navigation>

@@ -67,7 +67,12 @@
         android:id="@+id/myResumeFragment"
         android:name="com.employment.employment.feature.resume.MyResumeFragment"
         android:label="fragment_my_resume"
-        tools:layout="@layout/fragment_my_resume" />
+        tools:layout="@layout/fragment_my_resume" >
+
+        <deepLink
+            android:id="@+id/deepLink"
+            app:uri="employment://employment/resume" />
+    </fragment>
     <fragment
         android:id="@+id/addResumeFragment"
         android:name="com.employment.employment.feature.resume.AddResumeFragment"

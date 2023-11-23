@@ -7,11 +7,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.employment.employment.common.firebase.data.ExperienceModel
 import com.employment.employment.common.firebase.data.QualificationModel
 import com.employment.employment.common.toYearsAndMonths
+import com.employment.employment.databinding.ItemEducationDataBinding
 import com.employment.employment.databinding.ItemExperienceBinding
+import com.employment.employment.databinding.ItemExperienceDataBinding
 import com.employment.employment.databinding.ItemQualificationBinding
 
 
-class QualificationsAdapter(var list: MutableList<QualificationModel> = mutableListOf()) :
+class QualificationsAdapter(var list: MutableList<QualificationModel?> = mutableListOf()) :
     RecyclerView.Adapter<QualificationsAdapter.ViewHolder>() {
 
     inner class ViewHolder(private val rowView: ItemQualificationBinding) :
@@ -45,12 +47,45 @@ class QualificationsAdapter(var list: MutableList<QualificationModel> = mutableL
     override fun getItemCount(): Int = list.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        list[position].let { holder.onBind(it, position) }
+        list[position]?.let { holder.onBind(it, position) }
     }
 }
 
 
-class ExperiencesAdapter(var list: MutableList<ExperienceModel> = mutableListOf()) :
+class QualificationReadAdapter(var list: MutableList<QualificationModel?> = mutableListOf()) :
+    RecyclerView.Adapter<QualificationReadAdapter.ViewHolder>() {
+
+    inner class ViewHolder(private val rowView: ItemEducationDataBinding) :
+        RecyclerView.ViewHolder(rowView.root) {
+        fun onBind(item: QualificationModel, position: Int) {
+            rowView.apply {
+                tvYear.text = item.graduationYear
+                tvUniversityName.text = "${item.graduationCountry ?: ""}, ${item.graduationUniversity}"
+                tvCollegeName.text =  "${item.qualification}, ${item.collegeName ?: ""}"
+                tvGrade.text = "${item.graduationGrade}%"
+            }
+        }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        return ViewHolder(
+            ItemEducationDataBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
+    }
+
+    override fun getItemCount(): Int = list.size
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        list[position]?.let { holder.onBind(it, position) }
+    }
+}
+
+
+class ExperiencesAdapter(var list: MutableList<ExperienceModel?> = mutableListOf()) :
     RecyclerView.Adapter<ExperiencesAdapter.ViewHolder>() {
 
     inner class ViewHolder(private val rowView: ItemExperienceBinding) :
@@ -101,6 +136,55 @@ class ExperiencesAdapter(var list: MutableList<ExperienceModel> = mutableListOf(
     override fun getItemCount(): Int = list.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        list[position].let { holder.onBind(it, position) }
+        list[position]?.let { holder.onBind(it, position) }
+    }
+}
+
+
+class ExperiencesReadAdapter(var list: MutableList<ExperienceModel?> = mutableListOf()) :
+    RecyclerView.Adapter<ExperiencesReadAdapter.ViewHolder>() {
+
+    inner class ViewHolder(private val rowView: ItemExperienceDataBinding) :
+        RecyclerView.ViewHolder(rowView.root) {
+        fun onBind(item: ExperienceModel, position: Int) {
+            rowView.apply {
+                tvJobTitle.text = item.jobTitle
+                tvMobile.text = item.mobile
+                tvCompanyName.text = item.companyName
+                tvAboutCompany.text = item.companyAbout
+                tvCompanyNumber.text = item.companyNumber
+                tvExperienceNumber.text = item.experience?.toYearsAndMonths() ?: ""
+                tvGmail.text = item.companyEmail
+                tvWebsite.text = item.companyWebsite
+
+                if(item.companyWebsite.isNullOrEmpty()){
+                    tvWebsite.visibility = View.GONE
+                }else{
+                    tvWebsite.visibility = View.VISIBLE
+                }
+
+                if(item.companyNumber.isNullOrEmpty()){
+                    tvCompanyNumber.visibility = View.GONE
+                }else{
+                    tvCompanyNumber.visibility = View.VISIBLE
+                }
+            }
+        }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        return ViewHolder(
+            ItemExperienceDataBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
+    }
+
+    override fun getItemCount(): Int = list.size
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        list[position]?.let { holder.onBind(it, position) }
     }
 }
