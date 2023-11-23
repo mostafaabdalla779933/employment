@@ -21,7 +21,7 @@ class SendInterviewDetailsFragment : BaseFragmentDialog<FragmentSendInterviewDet
     override fun initBinding() = FragmentSendInterviewDetailsBinding.inflate(layoutInflater)
 
     override fun onDialogCreated() {
-        isCancelable = false
+        isCancelable = true
 
         binding.apply {
             btnSend.setOnClickListener {
