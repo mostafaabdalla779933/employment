@@ -55,7 +55,8 @@ class CompanyHomeFragment : BaseFragment<FragmentCompanyHomeBinding>() {
             users?.let {
                 for (job in allJos) {
                     for (user in it) {
-                        if (job.name == user.resume?.listOfExperiences?.get(0)?.jobTitle) {
+                        if (job.name == user.resume?.listOfExperiences?.get(0)?.jobTitle
+                            || job.nationality == user.resume?.nationality ) {
                             recommended.add(user)
                         }
                     }
