@@ -52,7 +52,7 @@ class NotificationFragment : BaseFragment<FragmentNotificationBinding>() {
         binding.rvNotifications.adapter = adapter
         FirebaseHelp.getAllObjects<NotificationModel>(FirebaseHelp.NOTIFICATION, {
             hideLoading()
-            adapter.submitList(it.filter { notification -> notification.toUserId == FirebaseHelp.getUserID() })
+            adapter.submitList(it.filter { notification -> notification.toUserId == FirebaseHelp.getUserID() }.sortedByDescending { e -> e.hash?.toLong() ?: 0L })
         }, {
             hideLoading()
             requireContext().showMessage(it)

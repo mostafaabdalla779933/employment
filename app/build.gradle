@@ -12,6 +12,15 @@ android {
     namespace 'com.employment.employment'
     compileSdk 33
 
+    signingConfigs {
+        release {
+            storeFile file("/employment.jks")
+            storePassword signing.storePassword
+            keyAlias signing.keyAlias
+            keyPassword signing.keyPassword
+        }
+    }
+
     defaultConfig {
         applicationId "com.employment.employment"
         minSdk 24
@@ -24,6 +33,7 @@ android {
 
     buildTypes {
         release {
+            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }

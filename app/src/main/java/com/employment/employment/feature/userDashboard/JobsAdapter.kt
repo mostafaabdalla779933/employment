@@ -7,8 +7,6 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.employment.employment.common.firebase.data.JobModel
-import com.employment.employment.common.firebase.data.UserModel
-import com.employment.employment.databinding.ItemCompanyBinding
 import com.employment.employment.databinding.ItemRecommendedJobBinding
 
 

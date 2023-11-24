@@ -38,7 +38,7 @@ class EmployeeDetailsFragment : BaseFragment<FragmentEmployeeDetailsBinding>() {
     private fun displayData() {
         binding.apply {
             Glide.with(requireContext())
-                .load(args.employee.profileUrl)
+                .load(args.employee.resume?.profileUrl)
                 .placeholder(R.drawable.ic_employee)
                 .into(ivEmployee)
             tvEmployeeName.text = "${args.employee.firstName} ${args.employee.lastName}"
