@@ -183,7 +183,8 @@ data class NotificationModel(
     var from: UserModel? = null,
     val toUserId: String? = null,
     val type: String? = null,
-    val interviewTime: String? = null
+    val interviewTime: String? = null,
+    val interviewTDate: String? = null
 ) : Parcelable
 
 @Parcelize

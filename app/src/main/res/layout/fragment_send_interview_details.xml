@@ -24,20 +24,31 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_gravity="center"
-            android:text="Send interview Time"
+            android:text="Send Interview Details"
             android:textColor="@color/black"
             android:textSize="20sp" />
 
-        <EditText
-            android:id="@+id/et_details"
+        <TextView
+            android:id="@+id/et_time"
             style="@style/EditText.edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:hint="Type here.."
+            android:hint="Select time ...."
+            android:editable="false"
             android:gravity="start"
-            android:inputType="number"
-            android:minLines="6"
+            android:padding="14dp"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/et_date"
+            style="@style/EditText.edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Select date ...."
+            android:editable="false"
+            android:gravity="start"
             android:padding="14dp"
             android:textColor="@color/black" />
 
