@@ -4,10 +4,15 @@ package com.employment.employment.feature.userDashboard
 import android.view.View
 import androidx.navigation.fragment.findNavController
 import com.employment.employment.common.base.BaseFragment
+import com.employment.employment.common.calculateAge
 import com.employment.employment.common.firebase.FirebaseHelp
+import com.employment.employment.common.firebase.FirebaseHelp.user
 import com.employment.employment.common.firebase.data.JobModel
 import com.employment.employment.common.firebase.data.UserModel
 import com.employment.employment.common.firebase.data.UserType
+import com.employment.employment.common.firebase.data.listOfExperience
+import com.employment.employment.common.getAgeRange
+import com.employment.employment.common.getExperienceRange
 import com.employment.employment.databinding.FragmentUserHomeBinding
 import com.google.android.material.tabs.TabLayout
 
@@ -51,7 +56,7 @@ class UserHomeFragment : BaseFragment<FragmentUserHomeBinding>() {
 
     private fun getAllCompanies() {
         showLoading()
-        FirebaseHelp.getAllObjects<UserModel>(FirebaseHelp.USERS, { allUsers ->
+        FirebaseHelp.getAllObjects(FirebaseHelp.USERS, { allUsers ->
             users = allUsers
             hideLoading()
             users?.let {
@@ -67,7 +72,16 @@ class UserHomeFragment : BaseFragment<FragmentUserHomeBinding>() {
         showLoading()
         FirebaseHelp.getAllObjects<JobModel>(FirebaseHelp.JOBS, { allJos ->
             hideLoading()
-            jobsAdapter.submitList(allJos)
+            jobsAdapter.submitList(allJos.filter { job ->
+                job.name == user?.resume?.jobTitle
+                        && getAgeRange(user?.resume?.birthDate?.calculateAge() ?: 0) == job.age
+                        && job.nationality == user?.resume?.nationality
+                        && if (job.experience == listOfExperience[4]) true else job.experience == user?.resume?.listOfExperiences?.sumOf { e ->
+                    e?.experience ?: 0L
+                }?.getExperienceRange()
+
+
+            })
         }, {
             hideLoading()
             showErrorMsg(it)

@@ -1,5 +1,6 @@
 package com.employment.employment.feature
 
+import android.view.View
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.employment.employment.common.base.BaseFragment
@@ -21,6 +22,10 @@ class JobDetailsFragment : BaseFragment<FragmentJobDetailsBinding>() {
         binding.apply {
             ivBack.setOnClickListener {
                 findNavController().popBackStack()
+            }
+
+            if(FirebaseHelp.user?.userType == UserType.Company.value){
+                btnRequest.visibility = View.GONE
             }
 
             btnRequest.setOnClickListener {

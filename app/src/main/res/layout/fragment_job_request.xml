@@ -186,11 +186,13 @@
 
                 <TextView
                     android:id="@+id/tv_interview_time"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
                     android:textSize="12sp"
                     tools:text="12:00pm"
+                    android:layout_marginHorizontal="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/tv_time"
                     app:layout_constraintTop_toTopOf="@id/tv_time"
                     app:layout_constraintBottom_toBottomOf="@id/tv_time"/>

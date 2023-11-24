@@ -29,7 +29,7 @@ class UserMenuFragment : BaseFragment<FragmentUserMenuBinding>() {
             tvEmail.text = FirebaseHelp.user?.email ?: ""
 
             ivNotification.setOnClickListener {
-                findNavController().navigate(UserHomeFragmentDirections.actionUserHomeFragmentToNotificationFragment())
+                findNavController().navigate(UserMenuFragmentDirections.actionUserMenuFragmentToNotificationFragment())
             }
         }
     }

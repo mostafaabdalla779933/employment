@@ -3,6 +3,7 @@ package com.employment.employment.feature.companyDashboard
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import com.employment.employment.R
 import com.employment.employment.common.base.BaseFragment
@@ -22,7 +23,9 @@ import com.employment.employment.databinding.FragmentCompanySearchBinding
 
 class CompanySearchFragment : BaseFragment<FragmentCompanySearchBinding>() {
 
-    private val adapter: EmployeesAdapter by lazy { EmployeesAdapter {} }
+    private val adapter: EmployeesAdapter by lazy { EmployeesAdapter {
+        findNavController().navigate(R.id.employeeDetailsFragment, bundleOf("employee" to it))
+    } }
 
     var users = mutableListOf<UserModel>()
 

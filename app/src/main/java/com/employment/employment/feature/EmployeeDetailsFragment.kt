@@ -43,10 +43,7 @@ class EmployeeDetailsFragment : BaseFragment<FragmentEmployeeDetailsBinding>() {
                 .into(ivEmployee)
             tvEmployeeName.text = "${args.employee.firstName} ${args.employee.lastName}"
             tvEmployeeNumber.text = args.employee.mobile
-            tvEmployeeJob.text =
-                args.employee.resume?.listOfQualifications?.get(0)?.qualification ?: "IT"
-            tvEmployeeJob.text =
-                args.employee.resume?.listOfQualifications?.get(0)?.qualification ?: "IT"
+            tvEmployeeJob.text = args.employee.resume?.jobTitle
 
             btnInterview.setOnClickListener {
                 findNavController().navigate(EmployeeDetailsFragmentDirections.actionEmployeeDetailsFragmentToSendInterviewDetailsFragment(args.employee))
