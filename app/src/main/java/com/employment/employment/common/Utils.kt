@@ -19,6 +19,8 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
+import com.employment.employment.common.firebase.data.listOfAges
+import com.employment.employment.common.firebase.data.listOfExperience
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
@@ -352,4 +354,49 @@ fun String.getDayMonthAndYear(): String {
     }
 
 }
+
+fun String.calculateAge(): Int {
+    val currentDate = Calendar.getInstance().time
+    val birthDate = SimpleDateFormat("EEE MMM d HH:mm:ss z yyyy", Locale.US).parse(this)
+
+    val currentCalendar = Calendar.getInstance()
+    currentCalendar.time = currentDate
+
+    val birthCalendar = Calendar.getInstance()
+    birthCalendar.time = birthDate
+
+    var age = currentCalendar.get(Calendar.YEAR) - birthCalendar.get(Calendar.YEAR)
+
+    // Check if the birthday has occurred this year
+    if (currentCalendar.get(Calendar.DAY_OF_YEAR) < birthCalendar.get(Calendar.DAY_OF_YEAR)) {
+        age--
+    }
+
+    return age
+}
+
+
+fun getAgeRange(age:Int):String{
+    return when{
+        age <= 25 -> listOfAges[0]
+        age in 26..30 -> listOfAges[1]
+        age in 31..40 -> listOfAges[2]
+        age in 41..50 -> listOfAges[3]
+        else -> listOfAges[4]
+    }
+}
+
+fun Long.getExperienceRange(): String {
+    val calendar = Calendar.getInstance()
+    calendar.timeInMillis = this
+    val mYear: Int = calendar.get(Calendar.YEAR) - 197
+
+    return when {
+        mYear < 1-> listOfExperience[0]
+        mYear in 1..3 -> listOfExperience[1]
+        mYear in 4..5 -> listOfExperience[2]
+        else -> listOfExperience[3]
+    }
+}
+
 

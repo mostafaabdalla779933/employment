@@ -23,6 +23,7 @@ import com.employment.employment.common.firebase.FirebaseHelp
 import com.employment.employment.common.firebase.data.ExperienceModel
 import com.employment.employment.common.firebase.data.QualificationModel
 import com.employment.employment.common.firebase.data.ResumeModel
+import com.employment.employment.common.firebase.data.listOfJobs
 import com.employment.employment.common.firebase.data.listOfNationality
 import com.employment.employment.common.firebase.data.listOfResidencyTypes
 import com.employment.employment.common.getString
@@ -136,6 +137,12 @@ class AddResumeFragment : BaseFragment<FragmentAddResumeBinding>(),
                 R.layout.spinner_item,
                 listOfResidencyTypes.toTypedArray()
             )
+
+            spinnerJobTitle.adapter = ArrayAdapter(
+                requireContext(),
+                R.layout.spinner_item,
+                listOfJobs.toTypedArray()
+            )
         }
     }
 
@@ -195,6 +202,7 @@ class AddResumeFragment : BaseFragment<FragmentAddResumeBinding>(),
 
             val resume = ResumeModel(
                 uri = selectedUri,
+                jobTitle = spinnerJobTitle.selectedItem.toString(),
                 firstName = etFirstName.getString(),
                 lastName = etLastName.getString(),
                 birthDate = selectedDate?.toString(),

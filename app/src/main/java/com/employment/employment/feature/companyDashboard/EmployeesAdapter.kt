@@ -15,8 +15,6 @@ class EmployeesAdapter(val onClick:(UserModel)->Unit): ListAdapter<UserModel, Em
     inner class ViewHolder(private val rowView: ItemEmployeeBinding): RecyclerView.ViewHolder(rowView.root){
         fun onBind(user: UserModel, position: Int){
             rowView.apply {
-
-                Log.d("main", "onBind:${user.getFullName()} ")
                 tvEmployeeName.text= user.getFullName()
                 tvEmployeeNumber.text = user.mobile
                // tvJobTitle.text = user.

@@ -32,6 +32,7 @@ data class UserModel(
 @Parcelize
 data class ResumeModel(
     var uri: Uri? = null,
+    var jobTitle: String? = null,
     var profileUrl: String? = "",
     var firstName: String? = "",
     var lastName: String? = "",
