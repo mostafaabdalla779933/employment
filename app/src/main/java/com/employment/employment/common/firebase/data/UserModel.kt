@@ -58,6 +58,7 @@ data class QualificationModel(
     var graduationGrade: String? = "",
     var collegeName: String? = "",
     var graduationYear: String? = "",
+    var GPA : Boolean ? = false
 ) : Parcelable
 
 
@@ -141,6 +142,14 @@ val listOfNationality = listOf(
     "Saudi Arabia",
     "Egyptian",
     "Indian"
+)
+
+
+val listOfCountry = listOf(
+    "Kuwait",
+    "Saudi Arabia",
+    "Egypt",
+    "India"
 )
 
 

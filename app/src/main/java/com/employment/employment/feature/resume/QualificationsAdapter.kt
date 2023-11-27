@@ -63,7 +63,7 @@ class QualificationReadAdapter(var list: MutableList<QualificationModel?> = muta
                 tvYear.text = "Graduation year: ${item.graduationYear}"
                 tvUniversityName.text = "University: ${item.graduationUniversity}"
                 tvCollegeName.text =  "College name: ${item.collegeName ?: ""}"
-                tvGrade.text = "Grade: ${item.graduationGrade}%"
+                tvGrade.text = if(item.GPA == true) "Grade: ${item.graduationGrade}"  else "Grade: ${item.graduationGrade}%"
                 tvGraduationCountry.text = "Graduation Country: ${item.graduationCountry}"
             }
         }

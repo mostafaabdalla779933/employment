@@ -1,12 +1,13 @@
 package com.employment.employment.feature.resume
 
+import android.view.View
 import android.widget.ArrayAdapter
 import androidx.navigation.fragment.findNavController
 import com.employment.employment.R
 import com.employment.employment.common.base.BaseFragmentDialog
 import com.employment.employment.common.firebase.data.QualificationModel
 import com.employment.employment.common.firebase.data.generateYearsList
-import com.employment.employment.common.firebase.data.listOfNationality
+import com.employment.employment.common.firebase.data.listOfCountry
 import com.employment.employment.common.firebase.data.listOfQualifications
 import com.employment.employment.common.getDouble
 import com.employment.employment.common.getString
@@ -38,7 +39,7 @@ class AddQualificationFragment : BaseFragmentDialog<FragmentAddQualificationBind
             spinnerGraduationCountry.adapter = ArrayAdapter(
                 requireContext(),
                 R.layout.spinner_item,
-                listOfNationality.toTypedArray()
+                listOfCountry.toTypedArray()
             )
 
             spinnerGraduationYear.adapter = ArrayAdapter(
@@ -51,6 +52,16 @@ class AddQualificationFragment : BaseFragmentDialog<FragmentAddQualificationBind
                 validate()
             }
 
+            rbGPA.setOnClickListener {
+                etGPA.visibility = View.VISIBLE
+                etGraduationGrade.visibility = View.GONE
+            }
+
+            rbPercentage.setOnClickListener {
+                etGPA.visibility = View.GONE
+                etGraduationGrade.visibility = View.VISIBLE
+            }
+
         }
     }
 
@@ -61,7 +72,11 @@ class AddQualificationFragment : BaseFragmentDialog<FragmentAddQualificationBind
                     requireContext().showMessage("fill Graduation University")
                 }
 
-                etGraduationGrade.isStringEmpty() || etGraduationGrade.getDouble() == 0.0 || etGraduationGrade.getDouble() > 100->{
+                rbPercentage.isChecked && (etGraduationGrade.isStringEmpty() || etGraduationGrade.getDouble() == 0.0 || etGraduationGrade.getDouble() > 100)->{
+                    requireContext().showMessage("invalid Graduation Grade")
+                }
+
+                rbGPA.isChecked && (etGPA.isStringEmpty() || etGPA.getDouble() == 0.0 || etGPA.getDouble() > 4)->{
                     requireContext().showMessage("invalid Graduation Grade")
                 }
 
@@ -76,9 +91,10 @@ class AddQualificationFragment : BaseFragmentDialog<FragmentAddQualificationBind
                             qualification = spinnerQualification.selectedItem.toString(),
                             graduationCountry = spinnerGraduationCountry.selectedItem.toString(),
                             graduationUniversity = etGraduationUniversity.getString(),
-                            graduationGrade = etGraduationGrade.getString(),
+                            graduationGrade = if(rbPercentage.isChecked)etGraduationGrade.getString() else etGPA.getString(),
                             collegeName = etCollegeName.getString(),
-                            graduationYear = spinnerGraduationYear.selectedItem.toString()
+                            graduationYear = spinnerGraduationYear.selectedItem.toString(),
+                            GPA = rbGPA.isChecked
                         )
                     )
                     findNavController().popBackStack()
