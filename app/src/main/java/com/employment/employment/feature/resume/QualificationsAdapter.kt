@@ -59,10 +59,12 @@ class QualificationReadAdapter(var list: MutableList<QualificationModel?> = muta
         RecyclerView.ViewHolder(rowView.root) {
         fun onBind(item: QualificationModel, position: Int) {
             rowView.apply {
-                tvYear.text = item.graduationYear
-                tvUniversityName.text = "${item.graduationCountry ?: ""}, ${item.graduationUniversity}"
-                tvCollegeName.text =  "${item.qualification}, ${item.collegeName ?: ""}"
-                tvGrade.text = "${item.graduationGrade}%"
+                tvQualification.text = item.qualification
+                tvYear.text = "Graduation year: ${item.graduationYear}"
+                tvUniversityName.text = "University: ${item.graduationUniversity}"
+                tvCollegeName.text =  "College name: ${item.collegeName ?: ""}"
+                tvGrade.text = "Grade: ${item.graduationGrade}%"
+                tvGraduationCountry.text = "Graduation Country: ${item.graduationCountry}"
             }
         }
     }
@@ -149,11 +151,11 @@ class ExperiencesReadAdapter(var list: MutableList<ExperienceModel?> = mutableLi
         fun onBind(item: ExperienceModel, position: Int) {
             rowView.apply {
                 tvJobTitle.text = item.jobTitle
-                tvMobile.text = item.mobile
-                tvCompanyName.text = item.companyName
+                tvMobile.text = "Mobile: ${item.mobile}"
+                tvCompanyName.text = "Company name: ${item.companyName}"
                 tvAboutCompany.text = item.companyAbout
-                tvCompanyNumber.text = item.companyNumber
-                tvExperienceNumber.text = item.experience?.toYearsAndMonths() ?: ""
+                tvCompanyNumber.text = "Company number: ${item.companyNumber}"
+                tvExperience.text = "Experience: ${item.experience?.toYearsAndMonths() ?: ""}"
                 tvGmail.text = item.companyEmail
                 tvWebsite.text = item.companyWebsite
 

@@ -75,7 +75,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:hint="Cairo university"
+            android:hint="University"
             android:inputType="text"
             android:padding="14dp"
             android:textColor="@color/black" />

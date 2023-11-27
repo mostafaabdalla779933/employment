@@ -126,6 +126,14 @@ class AddResumeFragment : BaseFragment<FragmentAddResumeBinding>(),
     private fun initSpinners() {
 
         binding.apply {
+
+            FirebaseHelp.user?.apply {
+                etFirstName.setText(firstName)
+                etLastName.setText(lastName)
+                etMobileNumber.setText(mobile)
+                etEmail.setText(email)
+
+            }
             spinnerNationality.adapter = ArrayAdapter(
                 requireContext(),
                 R.layout.spinner_item,

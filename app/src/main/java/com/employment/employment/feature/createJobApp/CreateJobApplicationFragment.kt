@@ -214,13 +214,13 @@ class CreateJobApplicationFragment : BaseFragment<FragmentCreateJobApplicationBi
 
         val date = SimpleDateFormat("hh:mm:a").format(Date(calendar.timeInMillis))
         if (isStartTime) {
-            selectedStartTime = date.replace(":a", "a")
+            selectedStartTime = date
             binding.apply {
                 etFromHour.setText(selectedStartTime)
                 selectedEndTime = null
             }
         } else {
-            selectedEndTime = date.replace(":a", "a")
+            selectedEndTime = date
             if (!isValidTime()) {
                 requireContext().showMessage("please choose valid period")
             } else {

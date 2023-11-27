@@ -141,6 +141,7 @@
             android:background="@drawable/bg_edit_text"
             android:gravity="top|start"
             android:hint="About company"
+            android:textColor="@color/black"
             android:textColorHint="#30003233"
             android:inputType="textMultiLine"
             android:lines="8"

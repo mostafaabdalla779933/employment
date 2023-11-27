@@ -137,10 +137,10 @@ fun generateYearsList(): List<String> {
 
 
 val listOfNationality = listOf(
-    "Kuwait",
-    "saudi arabia",
+    "Kuwaiti",
+    "Saudi Arabia",
     "Egyptian",
-    "India"
+    "Indian"
 )
 
 
