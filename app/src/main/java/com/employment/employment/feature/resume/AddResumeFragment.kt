@@ -90,6 +90,13 @@ class AddResumeFragment : BaseFragment<FragmentAddResumeBinding>(),
             selectedUri?.let {
                 ivEmployee.setImageFromUri(it, requireContext())
             }
+
+            cbFresh.setOnCheckedChangeListener { compoundButton, checked ->
+                if(checked){
+                    experiencesAdapter.list = mutableListOf()
+                    experiencesAdapter.notifyDataSetChanged()
+                }
+            }
         }
         initSpinners()
         listen()
@@ -119,6 +126,7 @@ class AddResumeFragment : BaseFragment<FragmentAddResumeBinding>(),
 
                 experiencesAdapter.list.add(result)
                 experiencesAdapter.notifyDataSetChanged()
+                binding.cbFresh.isChecked = false
             }
     }
 
@@ -190,7 +198,7 @@ class AddResumeFragment : BaseFragment<FragmentAddResumeBinding>(),
                     showErrorMsg("add qualification")
                 }
 
-                experiencesAdapter.list.isEmpty() -> {
+                !cbFresh.isChecked && experiencesAdapter.list.isEmpty() -> {
                     showErrorMsg("add experience")
                 }
 

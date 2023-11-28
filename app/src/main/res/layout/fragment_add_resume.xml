@@ -406,7 +406,7 @@
             android:id="@+id/rvQualifications"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/item_qualification"
-            tools:itemCount="1"/>
+            tools:itemCount="0"/>
 
 
         <TextView
@@ -440,6 +440,18 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/item_qualification"
             tools:itemCount="0"/>
+
+        <CheckBox
+            android:id="@+id/cbFresh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:padding="8dp"
+            android:checked="false"
+            android:buttonTint="#2363f5"
+            android:textColor="@color/black"
+            android:text="Fresh Graduated" />
+
 
         <TextView
             android:id="@+id/tv_add_experience"

@@ -389,7 +389,7 @@ fun getAgeRange(age:Int):String{
 fun Long.getExperienceRange(): String {
     val calendar = Calendar.getInstance()
     calendar.timeInMillis = this
-    val mYear: Int = calendar.get(Calendar.YEAR) - 197
+    val mYear: Int = calendar.get(Calendar.YEAR) - 1970
 
     return when {
         mYear < 1-> listOfExperience[0]
